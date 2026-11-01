@@ -1,0 +1,102 @@
+[
+  {
+    "id": "prose-1",
+    "class": "prose",
+    "prompt": "Explain in detail how a modern CPU pipeline works, covering fetch, decode, out-of-order execution, register renaming, branch prediction, and the memory hierarchy. Write several paragraphs."
+  },
+  {
+    "id": "prose-2",
+    "class": "prose",
+    "prompt": "Describe how a database write-ahead log works, why it is written before the data pages, how recovery replays it after a crash, and what trade-offs checkpointing introduces. Write several paragraphs."
+  },
+  {
+    "id": "prose-3",
+    "class": "prose",
+    "prompt": "Explain how TCP congestion control works. Cover slow start, congestion avoidance, fast retransmit, and the differences between Reno and CUBIC. Write several paragraphs."
+  },
+  {
+    "id": "prose-4",
+    "class": "prose",
+    "prompt": "Describe how a modern garbage collector works, covering mark and sweep, generational collection, write barriers, and compaction. Write several paragraphs."
+  },
+  {
+    "id": "code-1",
+    "class": "code",
+    "prompt": "Write a Python function that merges two sorted lists into one sorted list without using sorted(), explain its complexity, and include three unit tests."
+  },
+  {
+    "id": "code-2",
+    "class": "code",
+    "prompt": "Write a Go function that implements an LRU cache with O(1) get and put using a map and a doubly linked list. Include the struct definitions and a short usage example."
+  },
+  {
+    "id": "code-3",
+    "class": "code",
+    "prompt": "Write a SQL query that finds the top ten customers by total order value in the last ninety days, including customers with no orders. Explain the join and the index you would add."
+  },
+  {
+    "id": "code-4",
+    "class": "code",
+    "prompt": "Write a Rust function that parses a semicolon-separated key-value string into a HashMap, with error handling for duplicate keys and missing values. Include tests."
+  },
+  {
+    "id": "json-1",
+    "class": "json",
+    "prompt": "Return a JSON array of 20 objects describing planets. Each object has keys name, diameter_km, and moons. Output only the JSON, no prose."
+  },
+  {
+    "id": "json-2",
+    "class": "json",
+    "prompt": "Return a JSON object describing a deployment: service, version, replicas, environment, and a list of three health check objects with path and interval_seconds. Output only the JSON."
+  },
+  {
+    "id": "json-3",
+    "class": "json",
+    "prompt": "Return a JSON array of 15 log entries. Each entry has timestamp, level, service, message, and request_id. Use realistic values. Output only the JSON."
+  },
+  {
+    "id": "json-4",
+    "class": "json",
+    "prompt": "Return a JSON schema for a user profile with name, email, age, tags, and addresses. Include types and required fields. Output only the JSON."
+  },
+  {
+    "id": "math-1",
+    "class": "math",
+    "prompt": "Solve the equation 3x + 7 = 2x + 19 step by step. Show each algebraic operation and verify the answer."
+  },
+  {
+    "id": "math-2",
+    "class": "math",
+    "prompt": "A train leaves at 09:15 and travels 240 km at 80 km/h. It stops for 12 minutes. What time does it arrive? Show the arithmetic."
+  },
+  {
+    "id": "math-3",
+    "class": "math",
+    "prompt": "Compute the sum of the first 50 positive integers, then the sum of their squares. Show the formulas and the arithmetic."
+  },
+  {
+    "id": "math-4",
+    "class": "math",
+    "prompt": "Find the derivative of f(x) = 3x^4 - 2x^3 + 7x - 5. Then find the equation of the tangent line at x = 2. Show every step."
+  },
+  {
+    "id": "list-1",
+    "class": "list",
+    "prompt": "List ten practical ways to reduce tail latency in a web service. For each, give a one-sentence explanation and a concrete metric to watch."
+  },
+  {
+    "id": "list-2",
+    "class": "list",
+    "prompt": "List ten failure modes of a distributed scheduler and, for each, one detection signal and one mitigation."
+  },
+  {
+    "id": "list-3",
+    "class": "list",
+    "prompt": "List ten things to check when a GPU inference server is slower than expected. Order them from cheapest to most expensive to test."
+  },
+  {
+    "id": "list-4",
+    "class": "list",
+    "prompt": "List ten design decisions that affect the memory footprint of a large language model serving system, with the trade-off for each."
+  }
+]

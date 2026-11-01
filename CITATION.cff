@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this harness, cite the repository and the pinned llama.cpp commit."
+title: "speculative-decoding-lab"
+abstract: "Measure speculative-decoding acceptance, break-even, and routing on one consumer GPU."
+authors:
+  - family-names: "Mkdad"
+    given-names: "Noor"
+repository-code: "https://github.com/DrMkdaddy/speculative-decoding-lab"
+license: MIT
+date-released: "2026-11-01"
