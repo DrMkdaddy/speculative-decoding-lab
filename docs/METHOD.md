@@ -6,12 +6,18 @@ paths comparable without hiding a sampling difference inside the comparison.
 
 ## Models
 
-- Target: `Qwen3-4B-Instruct-2507-Q4_K_M.gguf`
+- Targets: `Qwen3-4B-Instruct-2507-Q4_K_M.gguf` and
+  `Qwen3-8B-Q4_K_M.gguf`
 - Draft: `Qwen3-0.6B-Q8_0.gguf`
 - Runtime: llama.cpp `0.7.0-dev`, build 786, commit `fcfb89b`
 - Backend: Vulkan, all layers on one AMD RX 9070 XT (RDNA4, gfx1201)
 - Context: 4096 tokens, one server slot
 - KV cache: f16
+
+The 4B sweep uses three repetitions per prompt; the 8B sweep uses two. Both
+use the same 20 prompts and the same greedy request shape. The target-size
+comparison is the point: the same draft is a large fraction of the 4B step and
+a smaller fraction of the 8B step.
 
 ## Request shape
 
@@ -86,9 +92,12 @@ GPU and change the latencies being compared.
 
 ## What is not claimed
 
-- No claim about a different target/draft pair.
+- No claim about a different target/draft pair beyond these two targets.
 - No claim about sampling; all measurements are greedy.
 - No claim that the router improves throughput on a live deployment. The
   replay measures the policy on this trace.
 - No claim that the draft model is free. Its VRAM and per-token cost are part
   of the result.
+- The 4B result is not a speedup. Only the 8B `n2` result is presented as a
+  drop-in speedup, because it is the only configuration that is both faster
+  and byte-identical.
