@@ -30,9 +30,11 @@ For each configuration (`baseline`, `n2`, `n4`, `n6`, `n8`, `n6-p0.6`):
 | VRAM | `rocm-smi` sampled while the server is resident |
 
 All requests are greedy (`temperature=0`, `top_k=1`, fixed seed) so the target
-output is the same with and without speculation. The harness asserts that the
-generated token counts match and the output text is identical; a speedup that
-changes the answer is not a speedup.
+output is comparable with and without speculation. The harness records the
+exact-match count and mean common-prefix agreement for every configuration,
+because the verification batch changes the floating-point composition on this
+Vulkan stack. A speedup that changes the answer is not presented as a drop-in
+replacement.
 
 ## Quick start
 

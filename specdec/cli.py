@@ -44,9 +44,9 @@ def _parser() -> argparse.ArgumentParser:
     run_p.add_argument("--out-dir", default="results")
     run_p.add_argument("--run-id", default=None)
     run_p.add_argument(
-        "--no-strict",
+        "--strict",
         action="store_true",
-        help="keep rows even if speculative output differs from the baseline",
+        help="exit non-zero if any speculative output differs from the baseline",
     )
 
     report_p = sub.add_parser("report", parents=[common], help="render result JSON")
@@ -80,7 +80,7 @@ def main(argv: list[str] | None = None) -> int:
                 llama_bin=Path(args.llama_bin),
                 out_dir=Path(args.out_dir),
                 run_id=args.run_id,
-                strict=not args.no_strict,
+                strict=args.strict,
             )
             data = load(path)
             print(render_markdown(data, str(path)))

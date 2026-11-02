@@ -120,7 +120,7 @@ def run_sweep(
     llama_bin: Path,
     out_dir: Path,
     run_id: str | None = None,
-    strict: bool = True,
+    strict: bool = False,
 ) -> Path:
     prompts = load_prompts(config.prompts_path)
     run_id = run_id or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
