@@ -75,12 +75,26 @@ def summarize_config(data: dict[str, Any], config: str) -> dict[str, Any]:
     acceptances = []
     first_token = []
     decode_tps = []
+    exact = 0
+    compared = 0
+    prefix = []
     for row in rows:
         b = baseline.get((row["prompt_id"], row["run"]))
         if b is not None:
             s = _speedup(row, b)
             if s is not None:
                 speedups.append(s)
+            if row["speculative"]:
+                compared += 1
+                text = row.get("text", "")
+                base_text = b.get("text", "")
+                if text == base_text:
+                    exact += 1
+                n = min(len(text), len(base_text))
+                i = 0
+                while i < n and text[i] == base_text[i]:
+                    i += 1
+                prefix.append(i / max(1, n))
         if row["speculative"]:
             a = _acceptance(row)
             if a is not None:
@@ -109,6 +123,10 @@ def summarize_config(data: dict[str, Any], config: str) -> dict[str, Any]:
         "vram_idle_bytes": server.get("vram_idle_bytes"),
         "vram_peak_bytes": server.get("vram_peak_bytes"),
         "vram_delta_bytes": server.get("vram_delta_bytes"),
+        "outputs_compared": compared,
+        "outputs_exact": exact,
+        "output_exact_rate": exact / compared if compared else None,
+        "prefix_agreement_mean": _mean(prefix),
         "output_mismatches": sum(
             1 for r in rows if r.get("matches_baseline") is False
         ),
@@ -227,19 +245,22 @@ def _best_fixed_spec(data: dict[str, Any]) -> str:
 
 
 def router_replay(data: dict[str, Any]) -> dict[str, Any]:
-    """Evaluate a per-class policy and an online EWMA policy.
+    """Evaluate per-class config selection and an online EWMA policy.
 
     The per-class policy is leave-one-prompt-out: when scoring a prompt, the
     class mean is computed from the other prompt ids in that class, so the
-    prompt being scored never sets its own threshold. The EWMA policy walks a
-    fixed shuffled order and updates after each request, which is what an
-    online router would see.
+    prompt being scored never sets its own threshold, and the class can choose
+    the draft depth with the best measured speedup. The EWMA policy walks a
+    fixed shuffled order and updates after each request.
     """
     baseline = _baseline_index(data)
-    spec_config = _best_fixed_spec(data)
+    spec_configs = _spec_configs(data)
     spec_rows = {
-        (r["prompt_id"], r["run"]): r
-        for r in data["rows"] if r["config"] == spec_config
+        config: {
+            (r["prompt_id"], r["run"]): r
+            for r in data["rows"] if r["config"] == config
+        }
+        for config in spec_configs
     }
     baseline_rows = {
         (r["prompt_id"], r["run"]): r for r in data["rows"] if not r["speculative"]
@@ -251,58 +272,82 @@ def router_replay(data: dict[str, Any]) -> dict[str, Any]:
     def total(rows: list[dict[str, Any]]) -> float:
         return sum(_predicted_ms(r) for r in rows)
 
+    def speedup(config: str, key: tuple[str, int]) -> float | None:
+        row = spec_rows[config].get(key)
+        if row is None:
+            return None
+        return _speedup(row, baseline_rows[key])
+
     always_base = total(list(baseline_rows.values()))
-    always_spec = total(list(spec_rows.values()))
+    best_fixed = _best_fixed_spec(data)
+    always_spec = total(list(spec_rows[best_fixed].values()))
     oracle = 0.0
-    oracle_choices = 0
+    oracle_spec = 0
     for key in keys:
-        b = _predicted_ms(baseline_rows[key])
-        s = _predicted_ms(spec_rows[key])
-        oracle += min(b, s)
-        if s < b:
-            oracle_choices += 1
+        choices = [_predicted_ms(baseline_rows[key])]
+        choices += [_predicted_ms(spec_rows[c][key]) for c in spec_configs]
+        best = min(choices)
+        oracle += best
+        if best < choices[0]:
+            oracle_spec += 1
 
     class_policy_rows = []
     class_policy_spec = 0
+    class_choices: dict[str, int] = {}
     for key in keys:
         cls = prompt_class[key[0]]
-        others = [
-            _speedup(spec_rows[k], baseline_rows[k])
-            for k in keys
-            if k[0] != key[0] and prompt_class[k[0]] == cls
-            and _speedup(spec_rows[k], baseline_rows[k]) is not None
-        ]
-        mean_speedup = _mean([x for x in others if x is not None]) or 1.0
-        use_spec = mean_speedup > 1.0
-        class_policy_spec += int(use_spec)
-        class_policy_rows.append(spec_rows[key] if use_spec else baseline_rows[key])
+        best_config = None
+        best_mean = 1.0
+        for config in spec_configs:
+            others = [
+                speedup(config, other)
+                for other in keys
+                if other[0] != key[0] and prompt_class[other[0]] == cls
+            ]
+            mean_speedup = _mean([x for x in others if x is not None])
+            if mean_speedup is not None and mean_speedup > best_mean:
+                best_mean = mean_speedup
+                best_config = config
+        if best_config is None:
+            class_policy_rows.append(baseline_rows[key])
+        else:
+            class_policy_spec += 1
+            class_choices[best_config] = class_choices.get(best_config, 0) + 1
+            class_policy_rows.append(spec_rows[best_config][key])
 
-    ewma = {cls: 1.0 for cls in classes}
+    ewma = {cls: {config: 1.0 for config in spec_configs} for cls in classes}
     ewma_rows = []
     ewma_spec = 0
+    ewma_choices: dict[str, int] = {}
     ordered = list(keys)
     random.Random(42).shuffle(ordered)
     for key in ordered:
         cls = prompt_class[key[0]]
-        use_spec = ewma[cls] > 1.0
-        ewma_spec += int(use_spec)
-        chosen = spec_rows[key] if use_spec else baseline_rows[key]
-        ewma_rows.append(chosen)
-        observed = _speedup(spec_rows[key], baseline_rows[key])
-        if observed is not None:
-            ewma[cls] = 0.7 * ewma[cls] + 0.3 * observed
+        best_config = max(spec_configs, key=lambda c: ewma[cls][c])
+        use_spec = ewma[cls][best_config] > 1.0
+        if use_spec:
+            ewma_spec += 1
+            ewma_choices[best_config] = ewma_choices.get(best_config, 0) + 1
+            ewma_rows.append(spec_rows[best_config][key])
+        else:
+            ewma_rows.append(baseline_rows[key])
+        for config in spec_configs:
+            observed = speedup(config, key)
+            if observed is not None:
+                ewma[cls][config] = 0.7 * ewma[cls][config] + 0.3 * observed
 
-    always_base_total = always_base
     return {
-        "spec_config": spec_config,
-        "always_baseline_ms": always_base_total,
+        "best_fixed_config": best_fixed,
+        "always_baseline_ms": always_base,
         "always_spec_ms": always_spec,
         "oracle_ms": oracle,
-        "oracle_spec_requests": oracle_choices,
+        "oracle_spec_requests": oracle_spec,
         "class_policy_ms": total(class_policy_rows),
         "class_policy_spec_requests": class_policy_spec,
+        "class_policy_choices": class_choices,
         "ewma_policy_ms": total(ewma_rows),
         "ewma_policy_spec_requests": ewma_spec,
+        "ewma_policy_choices": ewma_choices,
         "requests": len(keys),
     }
 
@@ -324,7 +369,7 @@ def render_markdown(data: dict[str, Any], source: str) -> str:
     lines.append("### Overall")
     lines.append("")
     lines.append(
-        "| Config | Decode tok/s | Speedup vs baseline | Acceptance | Mean accepted len | First token ms | VRAM GiB | Output mismatches |"
+        "| Config | Decode tok/s | Speedup vs baseline | Acceptance | Mean accepted len | First token ms | VRAM GiB | Exact output |"
     )
     lines.append("|---|---:|---:|---:|---:|---:|---:|---:|")
     for s in summaries:
@@ -340,8 +385,13 @@ def render_markdown(data: dict[str, Any], source: str) -> str:
         vram_s = f"{vram / (1024**3):.2f}" if vram else "-"
         tps = s["decode_tps_mean"]
         tps_s = f"{tps:.1f}" if tps is not None else "-"
+        exact_s = (
+            f"{s['outputs_exact']}/{s['outputs_compared']}"
+            if s["outputs_compared"]
+            else "-"
+        )
         lines.append(
-            f"| {s['config']} | {tps_s} | {speedup_s} | {acc_s} | {alen_s} | {ft_s} | {vram_s} | {s['output_mismatches']} |"
+            f"| {s['config']} | {tps_s} | {speedup_s} | {acc_s} | {alen_s} | {ft_s} | {vram_s} | {exact_s} |"
         )
 
     spec_configs = _spec_configs(data)
@@ -401,7 +451,7 @@ def render_markdown(data: dict[str, Any], source: str) -> str:
         lines.append("")
         router = router_replay(data)
         lines.append(
-            f"Policy uses `{router['spec_config']}` when speculation is enabled. "
+            f"Best fixed speculative config is `{router['best_fixed_config']}`. "
             f"{router['requests']} requests, decode time only."
         )
         lines.append("")
@@ -410,7 +460,7 @@ def render_markdown(data: dict[str, Any], source: str) -> str:
         base = router["always_baseline_ms"]
         for label, key, spec_key in (
             ("Always baseline", "always_baseline_ms", None),
-            ("Always spec", "always_spec_ms", None),
+            ("Always spec (best fixed)", "always_spec_ms", None),
             ("Oracle per prompt", "oracle_ms", "oracle_spec_requests"),
             ("Per-class, leave-one-out", "class_policy_ms", "class_policy_spec_requests"),
             ("Online EWMA", "ewma_policy_ms", "ewma_policy_spec_requests"),
@@ -419,6 +469,19 @@ def render_markdown(data: dict[str, Any], source: str) -> str:
             delta = (value - base) / base * 100 if base else 0.0
             spec_count = router[spec_key] if spec_key else "-"
             lines.append(f"| {label} | {value:.0f} | {delta:+.1f}% | {spec_count} |")
+        if router.get("class_policy_choices"):
+            lines.append("")
+            lines.append(
+                "Per-class choices: "
+                + ", ".join(f"`{k}` x{v}" for k, v in sorted(router["class_policy_choices"].items()))
+                + "."
+            )
+        if router.get("ewma_policy_choices"):
+            lines.append(
+                "Online EWMA choices: "
+                + ", ".join(f"`{k}` x{v}" for k, v in sorted(router["ewma_policy_choices"].items()))
+                + "."
+            )
 
     lines.append("")
     lines.append(

@@ -208,12 +208,6 @@ def run_sweep(
         if not row["matches_baseline"]:
             mismatches += 1
 
-    if strict and mismatches:
-        raise RunError(
-            f"{mismatches} generated outputs differ from the greedy baseline; "
-            "speculation is not preserving the target distribution"
-        )
-
     artifact = {
         "schema": SCHEMA,
         "run_id": run_id,
@@ -251,4 +245,9 @@ def run_sweep(
     out_path = out_dir / f"spec_decode_{config.name}_{run_id}.json"
     out_path.write_text(json.dumps(artifact, indent=2) + "\n")
     print(f"wrote {out_path}")
+    if strict and mismatches:
+        raise RunError(
+            f"{mismatches} generated outputs differ from the greedy baseline; "
+            f"artifact kept at {out_path} for inspection"
+        )
     return out_path
