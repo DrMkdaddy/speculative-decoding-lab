@@ -146,6 +146,22 @@ slower than always-baseline on the replay. The online EWMA is 0.9% slower.
 The oracle, which sees each prompt's outcome before choosing, could save 2.1%.
 That gap is the honest cost of deciding before the request is served.
 
+### Draft-quant sensitivity
+
+A supplementary run replaced the Q8_0 draft with Q4_K_M to test whether draft
+cost was the missing lever. It is not:
+
+| Config | Q8_0 draft | Q4_K_M draft |
+|---|---:|---:|
+| n2 | 0.875x | 0.875x |
+| n4 | 0.840x | 0.843x |
+| n6 | 0.767x | 0.771x |
+
+The Q4 draft is cheaper per token but accepts slightly less, and the two
+effects cancel. JSON with n4 reaches 1.011x in the Q4 run, but only 14 of 20
+outputs are exact. Source: `results/spec_decode_q4_draft_20261102T000652Z.json`.
+The boundary is not a quantization artifact.
+
 ### What the harness does with output divergence
 
 `n2` is byte-identical to the baseline on all 60 outputs. At `n4`, `n6`,

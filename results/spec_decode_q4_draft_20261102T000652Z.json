@@ -1,0 +1,3664 @@
+{
+  "schema": "specdec/v1",
+  "run_id": "20261102T000652Z",
+  "generated_at": "2026-11-02T00:08:30.229813+00:00",
+  "name": "qwen3-4b-instruct-2507__qwen3-0.6b-q4",
+  "hardware": {
+    "hostname": "nasr",
+    "platform": "Linux-7.3.0-2-cachyos-bore-x86_64-with-glibc2.44",
+    "machine": "x86_64",
+    "cpu": "",
+    "cpu_count": 16,
+    "gpu": "03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 48 [Radeon RX 9070/9070 XT/9070 GRE] (rev c0)"
+  },
+  "llama_cpp": {
+    "version": "0.7.0-dev",
+    "build": "786",
+    "commit": "fcfb89b",
+    "bin_dir": "/home/noorm/llama.cpp/src-b11050/build/bin"
+  },
+  "models": {
+    "target": {
+      "path": "/home/noorm/models/spec-lab/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+      "bytes": 2497281120,
+      "sha256": "3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597"
+    },
+    "draft": {
+      "path": "/home/noorm/models/spec-lab/Qwen3-0.6B-Q4_K_M.gguf",
+      "bytes": 396705472,
+      "sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a"
+    }
+  },
+  "run": {
+    "max_tokens": 128,
+    "runs": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "context": 4096,
+    "parallel": 1
+  },
+  "servers": {
+    "baseline": {
+      "command": [
+        "/home/noorm/llama.cpp/src-b11050/build/bin/llama-server",
+        "-m",
+        "/home/noorm/models/spec-lab/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8092",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "-ngl",
+        "99",
+        "-fa",
+        "on",
+        "-ctk",
+        "f16",
+        "-ctv",
+        "f16",
+        "--metrics"
+      ],
+      "log": "results-q4/logs/20261102T000652Z/baseline.log",
+      "vram_idle_bytes": 4577423360,
+      "vram_peak_bytes": 4554149888,
+      "vram_delta_bytes": 0
+    },
+    "n2": {
+      "command": [
+        "/home/noorm/llama.cpp/src-b11050/build/bin/llama-server",
+        "-m",
+        "/home/noorm/models/spec-lab/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8092",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "-ngl",
+        "99",
+        "-fa",
+        "on",
+        "-ctk",
+        "f16",
+        "-ctv",
+        "f16",
+        "--metrics",
+        "--spec-draft-model",
+        "/home/noorm/models/spec-lab/Qwen3-0.6B-Q4_K_M.gguf",
+        "--spec-draft-ngl",
+        "99",
+        "--spec-type",
+        "draft-simple",
+        "--spec-draft-n-max",
+        "2"
+      ],
+      "log": "results-q4/logs/20261102T000652Z/n2.log",
+      "vram_idle_bytes": 5312438272,
+      "vram_peak_bytes": 5497364480,
+      "vram_delta_bytes": 184926208
+    },
+    "n4": {
+      "command": [
+        "/home/noorm/llama.cpp/src-b11050/build/bin/llama-server",
+        "-m",
+        "/home/noorm/models/spec-lab/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8092",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "-ngl",
+        "99",
+        "-fa",
+        "on",
+        "-ctk",
+        "f16",
+        "-ctv",
+        "f16",
+        "--metrics",
+        "--spec-draft-model",
+        "/home/noorm/models/spec-lab/Qwen3-0.6B-Q4_K_M.gguf",
+        "--spec-draft-ngl",
+        "99",
+        "--spec-type",
+        "draft-simple",
+        "--spec-draft-n-max",
+        "4"
+      ],
+      "log": "results-q4/logs/20261102T000652Z/n4.log",
+      "vram_idle_bytes": 5430730752,
+      "vram_peak_bytes": 5503811584,
+      "vram_delta_bytes": 73080832
+    },
+    "n6": {
+      "command": [
+        "/home/noorm/llama.cpp/src-b11050/build/bin/llama-server",
+        "-m",
+        "/home/noorm/models/spec-lab/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8092",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "-ngl",
+        "99",
+        "-fa",
+        "on",
+        "-ctk",
+        "f16",
+        "-ctv",
+        "f16",
+        "--metrics",
+        "--spec-draft-model",
+        "/home/noorm/models/spec-lab/Qwen3-0.6B-Q4_K_M.gguf",
+        "--spec-draft-ngl",
+        "99",
+        "--spec-type",
+        "draft-simple",
+        "--spec-draft-n-max",
+        "6"
+      ],
+      "log": "results-q4/logs/20261102T000652Z/n6.log",
+      "vram_idle_bytes": 5416075264,
+      "vram_peak_bytes": 5522452480,
+      "vram_delta_bytes": 106377216
+    }
+  },
+  "rows": [
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "prose-1",
+      "prompt_class": "prose",
+      "prompt": "Explain in detail how a modern CPU pipeline works, covering fetch, decode, out-of-order execution, register renaming, branch prediction, and the memory hierarchy. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern CPU pipeline is a sophisticated system designed to maximize instruction throughput and minimize execution time by breaking down the execution of a program into a series of stages. The most fundamental stages are **fetch**, **decode**, and **execute**, which are typically followed by **memory access** and **write-back**. In a basic pipeline, each instruction moves through these stages sequentially, allowing one instruction to be processed at a time in each stage. However, modern CPUs go far beyond this simple model by incorporating advanced techniques such as **out-of-order execution**, **register renaming**, **branch prediction**, and a highly optimized **memory hierarchy** to achieve greater",
+      "text_sha256": "667c694250e8be73a201d2bf4c381f168a96f62c5a30856207e254ecd32ba077",
+      "timings": {
+        "wall_ms": 853.9126860014221,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 36.724,
+        "predicted_ms": 812.348,
+        "prompt_per_second": 980.2853719638385,
+        "predicted_per_second": 156.33693934126757,
+        "first_token_ms": 43.070468749999996,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 853.9126860014221,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "prose-2",
+      "prompt_class": "prose",
+      "prompt": "Describe how a database write-ahead log works, why it is written before the data pages, how recovery replays it after a crash, and what trade-offs checkpointing introduces. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A database write-ahead log (WAL) is a critical component of ensuring data durability and consistency in a transactional database system. The core principle of the WAL is that all changes to the database's data pages must be recorded in the log before they are actually written to the data pages on disk. This means that any transaction that modifies data must first write its transaction log entry to the log before the actual data update occurs. This ordering ensures that if a crash occurs, the database can recover to a consistent state by replaying the log entries. The log entries typically contain information such as the transaction ID, the data page being modified, the",
+      "text_sha256": "bce89e9e1705af59a046f2a3ace3bb9b0c2e3e28fd63e208448d784bc9c49356",
+      "timings": {
+        "wall_ms": 858.6296089997631,
+        "prompt_n": 39,
+        "predicted_n": 128,
+        "prompt_ms": 34.001,
+        "predicted_ms": 810.648,
+        "prompt_per_second": 1147.0250874974265,
+        "predicted_per_second": 156.66479162349134,
+        "first_token_ms": 40.3341875,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 858.6296089997631,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "prose-3",
+      "prompt_class": "prose",
+      "prompt": "Explain how TCP congestion control works. Cover slow start, congestion avoidance, fast retransmit, and the differences between Reno and CUBIC. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " Your response should be in English, and contain at least 5 sentences. TCP congestion control is a set of mechanisms designed to prevent network congestion by dynamically adjusting the transmission rate based on network feedback. The process begins with **slow start**, where the sender increases its congestion window (cwnd) exponentially by doubling it after each successful acknowledgment, allowing rapid initial growth until the network signals congestion. Once the sender reaches a threshold, congestion avoidance takes over, where the cwnd grows more slowly\u2014linearly\u2014by increasing by one segment per round-trip time (RTT), thus reducing the risk of overwhelming the network. **Fast retransmit",
+      "text_sha256": "147a3592f02d1c48ecec49a14cb3a9968b757b5920753ce9eccfe6a947e41372",
+      "timings": {
+        "wall_ms": 848.3466500001668,
+        "prompt_n": 34,
+        "predicted_n": 128,
+        "prompt_ms": 34.658,
+        "predicted_ms": 800.222,
+        "prompt_per_second": 981.0144843903283,
+        "predicted_per_second": 158.70595909635077,
+        "first_token_ms": 40.909734375,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 848.3466500001668,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "prose-4",
+      "prompt_class": "prose",
+      "prompt": "Describe how a modern garbage collector works, covering mark and sweep, generational collection, write barriers, and compaction. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern garbage collector works by identifying and reclaiming memory that is no longer accessible to the program. One of the most fundamental techniques used is **mark-and-sweep**. In this process, the collector starts from root objects (such as global variables or stack variables) and recursively marks all objects that are reachable through object references. Once the marking phase is complete, the collector identifies all unmarked objects\u2014those that are unreachable\u2014and sweeps them out of memory. While simple and effective, mark-and-sweep can lead to memory fragmentation and is often used as a base for more advanced collectors.\n\nTo improve performance and reduce the overhead of garbage collection",
+      "text_sha256": "b01a48bfbd5e75a68dc0c27a11dc18aded56cce4141ab5afd91b9ebae6feeb75",
+      "timings": {
+        "wall_ms": 857.0815579987539,
+        "prompt_n": 28,
+        "predicted_n": 128,
+        "prompt_ms": 33.555,
+        "predicted_ms": 810.348,
+        "prompt_per_second": 834.4509015049917,
+        "predicted_per_second": 156.7227907022662,
+        "first_token_ms": 39.88584375,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 857.0815579987539,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "code-1",
+      "prompt_class": "code",
+      "prompt": "Write a Python function that merges two sorted lists into one sorted list without using sorted(), explain its complexity, and include three unit tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\ndef merge_sorted_lists(list1, list2):\n    \"\"\"\n    Merges two sorted lists into one sorted list.\n    \n    Parameters:\n    list1 (list): First sorted list.\n    list2 (list): Second sorted list.\n    \n    Returns:\n    list: A new sorted list containing all elements from both input lists.\n    \"\"\"\n    result = []\n    i, j = 0, 0\n    \n    # Compare elements from both lists and append the smaller one\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            result",
+      "text_sha256": "dd97d53d7007dfc310a9a0ba4e2fa75dd4a8fb87d47bda4059d5311871839975",
+      "timings": {
+        "wall_ms": 844.2635780011187,
+        "prompt_n": 27,
+        "predicted_n": 128,
+        "prompt_ms": 32.36,
+        "predicted_ms": 799.33,
+        "prompt_per_second": 834.3634116192832,
+        "predicted_per_second": 158.8830645665745,
+        "first_token_ms": 38.604765625,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 844.2635780011187,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "code-2",
+      "prompt_class": "code",
+      "prompt": "Write a Go function that implements an LRU cache with O(1) get and put using a map and a doubly linked list. Include the struct definitions and a short usage example.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```go\npackage main\n\nimport \"fmt\"\n\ntype Node struct {\n    key   int\n    value interface{}\n    prev  *Node\n    next  *Node\n}\n\ntype LRUCache struct {\n    capacity int\n    mapData  map[int]*Node\n    head     *Node\n    tail     *Node\n}\n\nfunc NewLRUCache(capacity int) *LRUCache {\n    return &LRUCache{\n        capacity: capacity,\n        mapData:  make(map[int]*Node),\n        head:     nil,\n        tail:     nil,\n    }\n}\n\nfunc (l *LRUC",
+      "text_sha256": "5bb2a252ef62c7b2efeed2f358f36cd9eca734f2a23d26bba3fd3c0eb6d05be4",
+      "timings": {
+        "wall_ms": 859.7390440008894,
+        "prompt_n": 37,
+        "predicted_n": 128,
+        "prompt_ms": 34.299,
+        "predicted_ms": 813.278,
+        "prompt_per_second": 1078.7486515641856,
+        "predicted_per_second": 156.15816485875678,
+        "first_token_ms": 40.652734375,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 859.7390440008894,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "code-3",
+      "prompt_class": "code",
+      "prompt": "Write a SQL query that finds the top ten customers by total order value in the last ninety days, including customers with no orders. Explain the join and the index you would add.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain why the query might be slow and how to improve it.\n\n```sql\nSELECT \n    c.customer_id,\n    c.customer_name,\n    COALESCE(SUM(o.order_value), 0) AS total_order_value\nFROM \n    customers c\n    LEFT JOIN orders o ON c.customer_id = o.customer_id \n        AND o.order_date >= CURRENT_DATE - INTERVAL '90 days'\nGROUP BY \n    c.customer_id, c.customer_name\nORDER BY \n    total_order_value DESC\nLIMIT 10;\n```\n\n### Join Explanation:\n- A `LEFT JOIN` is used to include all customers,",
+      "text_sha256": "950007c704857e6d155e0a3a6589a249e80db91d097393fd80753db04ac61ff9",
+      "timings": {
+        "wall_ms": 853.8736499976949,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 35.383,
+        "predicted_ms": 805.513,
+        "prompt_per_second": 1017.4377525930531,
+        "predicted_per_second": 157.66350139600476,
+        "first_token_ms": 41.6760703125,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 853.8736499976949,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "code-4",
+      "prompt_class": "code",
+      "prompt": "Write a Rust function that parses a semicolon-separated key-value string into a HashMap, with error handling for duplicate keys and missing values. Include tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\n```rust\nuse std::collections::HashMap;\n\n/// Parses a semicolon-separated key-value string into a HashMap.\n/// \n/// Each key-value pair is separated by a semicolon. The format is `key=value`.\n/// \n/// # Errors\n/// - Returns an error if a key appears more than once (duplicate key).\n/// - Returns an error if a value is missing (missing value).\n/// \n/// # Examples\n/// ```\n/// let input = \"name=John;age=30;city=New York\";\n/// let result = parse_key_value_string(input).unwrap();\n/// assert_eq!(result.get",
+      "text_sha256": "6680c226db71fd722714d3ddb5a6783e9db945cd0665e50e7b0fedbfe998b744",
+      "timings": {
+        "wall_ms": 843.3528329987894,
+        "prompt_n": 30,
+        "predicted_n": 128,
+        "prompt_ms": 32.488,
+        "predicted_ms": 797.558,
+        "prompt_per_second": 923.4178773701059,
+        "predicted_per_second": 159.23606809786875,
+        "first_token_ms": 38.718921875,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 843.3528329987894,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "json-1",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 20 objects describing planets. Each object has keys name, diameter_km, and moons. Output only the JSON, no prose.",
+      "run": 0,
+      "seed": 7,
+      "text": " [{\"name\":\"Mercury\",\"diameter_km\":4879,\"moons\":0},{\"name\":\"Venus\",\"diameter_km\":12104,\"moons\":0},{\"name\":\"Earth\",\"diameter_km\":12756,\"moons\":1},{\"name\":\"Mars\",\"diameter_km\":6792,\"moons\":2},{\"name\":\"Jupiter\",\"diameter_km\":142984,\"moons\":95},{\"name\":\"Saturn\",\"diameter_km\":120536,\"moons\":146},{\"name\":\"Uranus",
+      "text_sha256": "a7560cc817ef306de76013438d250a4c6144428f02b987a3865d2ae0d4ef2e6e",
+      "timings": {
+        "wall_ms": 847.7658230003726,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 33.58,
+        "predicted_ms": 801.149,
+        "prompt_per_second": 952.9481834425253,
+        "predicted_per_second": 158.5223223145757,
+        "first_token_ms": 39.8389765625,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 847.7658230003726,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "json-2",
+      "prompt_class": "json",
+      "prompt": "Return a JSON object describing a deployment: service, version, replicas, environment, and a list of three health check objects with path and interval_seconds. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"service\": \"api-service\",\n  \"version\": \"v1.2.0\",\n  \"replicas\": 3,\n  \"environment\": \"production\",\n  \"health_checks\": [\n    {\n      \"path\": \"/healthz\",\n      \"interval_seconds\": 10\n    },\n    {\n      \"path\": \"/ready\",\n      \"interval_seconds\": 15\n    },\n    {\n      \"path\": \"/liveness\",\n      \"interval_seconds\": 20\n    }\n  ]\n}\n```\n\n\n```json\n{\n  \"service\": \"api-service\",\n  \"",
+      "text_sha256": "603d8d920af5c9a02dd56ef28b42fb862e6a7f89209d9dff4ce0857017538513",
+      "timings": {
+        "wall_ms": 843.9616670002579,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 33.787,
+        "predicted_ms": 796.4,
+        "prompt_per_second": 1035.9013821884157,
+        "predicted_per_second": 159.46760421898546,
+        "first_token_ms": 40.008874999999996,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 843.9616670002579,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "json-3",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 15 log entries. Each entry has timestamp, level, service, message, and request_id. Use realistic values. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n[\n  {\n    \"timestamp\": \"2023-10-05T08:15:30Z\",\n    \"level\": \"INFO\",\n    \"service\": \"auth-service\",\n    \"message\": \"User login successful: user_id=12345\",\n    \"request_id\": \"req-789abc\"\n  },\n  {\n    \"timestamp\": \"2023-10-05T08:16:12Z\",\n    \"level\": \"ERROR\",\n    \"service\": \"payment-service\",\n    \"message\": \"Payment",
+      "text_sha256": "6061ca7825c253df934e3c0698fa5a92e6c67f01b3efa273f77697b7ffd6222e",
+      "timings": {
+        "wall_ms": 856.5168180030014,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 35.764,
+        "predicted_ms": 803.238,
+        "prompt_per_second": 978.6377362711105,
+        "predicted_per_second": 158.1100495743478,
+        "first_token_ms": 42.039296875000005,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 856.5168180030014,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "json-4",
+      "prompt_class": "json",
+      "prompt": "Return a JSON schema for a user profile with name, email, age, tags, and addresses. Include types and required fields. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"The user's full name\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"description\": \"The user's email address\"\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 150,\n      \"description",
+      "text_sha256": "61125032e0edbb4f1f95ab79d08d3db5c8de865843df72503c90ca1c0eb188ec",
+      "timings": {
+        "wall_ms": 844.0510760010511,
+        "prompt_n": 31,
+        "predicted_n": 128,
+        "prompt_ms": 32.492,
+        "predicted_ms": 798.127,
+        "prompt_per_second": 954.0810045549675,
+        "predicted_per_second": 159.12254566002656,
+        "first_token_ms": 38.72736718749999,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 844.0510760010511,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "math-1",
+      "prompt_class": "math",
+      "prompt": "Solve the equation 3x + 7 = 2x + 19 step by step. Show each algebraic operation and verify the answer.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain the significance of the order of operations in solving equations.\n\nTo solve the equation \\(3x + 7 = 2x + 19\\), we will follow a step-by-step approach, showing each algebraic operation, verify the solution, and explain the importance of the order of operations.\n\n### Step-by-Step Solution:\n\n1. **Start with the given equation:**\n   \\[\n   3x + 7 = 2x + 19\n   \\]\n\n2. **Subtract \\(2x\\) from both sides to isolate the variable terms on one side:**\n   \\[\n  ",
+      "text_sha256": "a0e83071e0a59a0fc83dbc6933a07799d2807e1ec2e11c1d5bf7b4543708de4b",
+      "timings": {
+        "wall_ms": 851.8583490003948,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 33.316,
+        "predicted_ms": 804.44,
+        "prompt_per_second": 960.4994597190538,
+        "predicted_per_second": 157.87380040773706,
+        "first_token_ms": 39.60068750000001,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 851.8583490003948,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "math-2",
+      "prompt_class": "math",
+      "prompt": "A train leaves at 09:15 and travels 240 km at 80 km/h. It stops for 12 minutes. What time does it arrive? Show the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, how long does it take to travel 240 km at 80 km/h?\n\nTo determine the arrival time, let's break down the problem into two parts:\n\n1. **Travel time**:  \n   The train travels 240 km at 80 km/h.  \n   Time = Distance \u00f7 Speed = \\( \\frac{240}{80} = 3 \\) hours.\n\n2. **Stop time**:  \n   The train stops for 12 minutes.\n\n3. **Total time from departure to arrival**:  \n   3 hours + 12 minutes = 3 hours",
+      "text_sha256": "ac052de2bb63f49cfe6290ba268e45b7dc0e611b936c5f85fb612f60b3fb5ab4",
+      "timings": {
+        "wall_ms": 848.1882859996404,
+        "prompt_n": 42,
+        "predicted_n": 128,
+        "prompt_ms": 34.254,
+        "predicted_ms": 799.587,
+        "prompt_per_second": 1226.1341741110527,
+        "predicted_per_second": 158.83199701846078,
+        "first_token_ms": 40.5007734375,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 848.1882859996404,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "math-3",
+      "prompt_class": "math",
+      "prompt": "Compute the sum of the first 50 positive integers, then the sum of their squares. Show the formulas and the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " To solve this problem, we will compute two things:\n\n1. The **sum of the first 50 positive integers**.\n2. The **sum of the squares of the first 50 positive integers**.\n\nWe'll use well-known formulas from arithmetic and algebra.\n\n---\n\n### **1. Sum of the first 50 positive integers**\n\nThe formula for the sum of the first $ n $ positive integers is:\n\n$$\nS = 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$\n\nFor $ n = 50 $:\n\n$$\nS",
+      "text_sha256": "fbbfe34aaa8ad7b44f3f7fb1de8b50c58c2ecb6c672118131d13863546caf3ff",
+      "timings": {
+        "wall_ms": 849.009681998723,
+        "prompt_n": 26,
+        "predicted_n": 128,
+        "prompt_ms": 35.629,
+        "predicted_ms": 799.553,
+        "prompt_per_second": 729.74262538943,
+        "predicted_per_second": 158.8387511522063,
+        "first_token_ms": 41.8755078125,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 849.009681998723,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "math-4",
+      "prompt_class": "math",
+      "prompt": "Find the derivative of f(x) = 3x^4 - 2x^3 + 7x - 5. Then find the equation of the tangent line at x = 2. Show every step.",
+      "run": 0,
+      "seed": 7,
+      "text": " To find the derivative of the function and the equation of the tangent line at a given point, we follow these steps:\n\n---\n\n### **Step 1: Find the derivative of $ f(x) $**\n\nGiven:\n$$\nf(x) = 3x^4 - 2x^3 + 7x - 5\n$$\n\nWe differentiate term by term using the power rule:\n$$\n\\frac{d}{dx}[x^n] = n x^{n-1}\n$$\n\nApply to each term:\n\n- $ \\frac{d}{dx}[3x^4] = 3 \\cdot 4",
+      "text_sha256": "2fb48c89710038218dcbb90c852e3610789729763bc19f24fae1769580a559cd",
+      "timings": {
+        "wall_ms": 866.9965139997657,
+        "prompt_n": 45,
+        "predicted_n": 128,
+        "prompt_ms": 37.132,
+        "predicted_ms": 815.966,
+        "prompt_per_second": 1211.8927070989982,
+        "predicted_per_second": 155.64374005779652,
+        "first_token_ms": 43.506734375,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 866.9965139997657,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "list-1",
+      "prompt_class": "list",
+      "prompt": "List ten practical ways to reduce tail latency in a web service. For each, give a one-sentence explanation and a concrete metric to watch.",
+      "run": 0,
+      "seed": 7,
+      "text": "  \n\n1. **Use a caching layer (e.g., Redis or Memcached)**  \n   - *Explanation*: Caching frequently accessed data reduces the need to fetch from the database or compute-intensive services.  \n   - *Metric*: Cache hit rate (e.g., 95% cache hit rate).  \n\n2. **Optimize database queries (e.g., indexing, query optimization)**  \n   - *Explanation*: Efficient queries reduce database response time, which is a major contributor to tail latency.  \n   - *Metric*: Average query execution time (e.g., <100ms).  \n\n3. **Implement connection pooling",
+      "text_sha256": "b74024aa6d7fd83cb3d233ac8b7e0337d60f95cb99955ee296290ef5d73c061e",
+      "timings": {
+        "wall_ms": 859.7596209983749,
+        "prompt_n": 29,
+        "predicted_n": 128,
+        "prompt_ms": 34.109,
+        "predicted_ms": 806.906,
+        "prompt_per_second": 850.215485648949,
+        "predicted_per_second": 157.3913194349776,
+        "first_token_ms": 40.412953125,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 859.7596209983749,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "list-2",
+      "prompt_class": "list",
+      "prompt": "List ten failure modes of a distributed scheduler and, for each, one detection signal and one mitigation.",
+      "run": 0,
+      "seed": 7,
+      "text": " Failure modes of a distributed scheduler can include issues related to communication, coordination, fault tolerance, load balancing, and resource allocation. Below are ten such failure modes, each with a detection signal and a mitigation strategy:\n\n1. **Network Partition (Split Brain)**  \n   - *Detection Signal*: Increased latency or packet loss between nodes; nodes detect no communication with a subset of the cluster.  \n   - *Mitigation*: Implement consensus algorithms (e.g., Raft or Paxos) to detect and resolve split brain; use network health checks and fencing mechanisms to isolate partitions.\n\n2. **Node Failure (Crash or Unavailability)**  \n",
+      "text_sha256": "8519479d0c9545e4caec3198ffd7cfa11f33d5ea861c2945b38548c19bec113a",
+      "timings": {
+        "wall_ms": 854.330886999378,
+        "prompt_n": 20,
+        "predicted_n": 128,
+        "prompt_ms": 33.77,
+        "predicted_ms": 807.313,
+        "prompt_per_second": 592.2416345869113,
+        "predicted_per_second": 157.31197193653514,
+        "first_token_ms": 40.077132812500004,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 854.330886999378,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "list-3",
+      "prompt_class": "list",
+      "prompt": "List ten things to check when a GPU inference server is slower than expected. Order them from cheapest to most expensive to test.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, provide a brief explanation for each.\n\nWe are looking for ten things to check when a GPU inference server is slower than expected, ordered from cheapest to most expensive to test. Each should have a brief explanation.\n\n---\n\n**1. Check GPU Utilization (via nvidia-smi or similar)**  \n*Cost: Cheapest*  \nCheck if the GPU is being used efficiently. Low utilization (e.g., <30%) may indicate idle time or inefficient batching. High utilization but still slow inference might point to bottlenecks in data transfer or CPU/GPU communication.\n\n**2. Verify Model Size and Complexity**  \n*Cost",
+      "text_sha256": "520e2fa648e1d6681099c6593778e95ff5c220bf6a39e8b09e3574473e4c0e0a",
+      "timings": {
+        "wall_ms": 845.8493819998694,
+        "prompt_n": 25,
+        "predicted_n": 128,
+        "prompt_ms": 32.457,
+        "predicted_ms": 800.046,
+        "prompt_per_second": 770.2498690575222,
+        "predicted_per_second": 158.740872399837,
+        "first_token_ms": 38.707359375,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 845.8493819998694,
+      "matches_baseline": true
+    },
+    {
+      "config": "baseline",
+      "speculative": false,
+      "n_max": null,
+      "p_min": null,
+      "prompt_id": "list-4",
+      "prompt_class": "list",
+      "prompt": "List ten design decisions that affect the memory footprint of a large language model serving system, with the trade-off for each.",
+      "run": 0,
+      "seed": 7,
+      "text": " 1. **Model Size and Architecture**  \n   - *Decision*: Choosing between a larger model (e.g., 13B vs. 7B parameters) or a smaller, more efficient architecture (e.g., distilled or quantized models).  \n   - *Trade-off*: Larger models offer better performance and accuracy but significantly increase memory usage. Smaller models reduce memory footprint but may sacrifice performance and context understanding.\n\n2. **Quantization Level**  \n   - *Decision*: Applying quantization (e.g., 8-bit, 4-bit, or 1-bit) to reduce model weights from 32-bit",
+      "text_sha256": "c7d0c906e9a6201465f65c01c28bd25b8dbb4654f510df68f7490c9423019d26",
+      "timings": {
+        "wall_ms": 852.238520001265,
+        "prompt_n": 24,
+        "predicted_n": 128,
+        "prompt_ms": 33.122,
+        "predicted_ms": 805.928,
+        "prompt_per_second": 724.5939254875914,
+        "predicted_per_second": 157.58231504551276,
+        "first_token_ms": 39.4183125,
+        "draft_n": 0,
+        "draft_n_accepted": 0
+      },
+      "spec": {
+        "drafts": 0.0,
+        "draft_tokens": 0.0,
+        "accepted_tokens": 0.0,
+        "acceptance": null,
+        "mean_accepted_length": null,
+        "accepted_by_position": {},
+        "acceptance_by_position": {}
+      },
+      "wall_ms": 852.238520001265,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "prose-1",
+      "prompt_class": "prose",
+      "prompt": "Explain in detail how a modern CPU pipeline works, covering fetch, decode, out-of-order execution, register renaming, branch prediction, and the memory hierarchy. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern CPU pipeline is a sophisticated system designed to maximize instruction throughput and minimize execution time by breaking down the execution of a program into a series of stages. The most fundamental stages are **fetch**, **decode**, and **execute**, which are typically followed by **memory access** and **write-back**. In a basic pipeline, each instruction moves through these stages sequentially, allowing one instruction to be processed at a time in each stage. However, modern CPUs go far beyond this simple model by incorporating advanced techniques such as **out-of-order execution**, **register renaming**, **branch prediction**, and a highly optimized **memory hierarchy** to achieve greater",
+      "text_sha256": "667c694250e8be73a201d2bf4c381f168a96f62c5a30856207e254ecd32ba077",
+      "timings": {
+        "wall_ms": 1110.4681640026683,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 48.268,
+        "predicted_ms": 1054.619,
+        "prompt_per_second": 745.8357503936355,
+        "predicted_per_second": 120.42263604202087,
+        "first_token_ms": 56.5072109375,
+        "draft_n": 131,
+        "draft_n_accepted": 60
+      },
+      "spec": {
+        "drafts": 66.0,
+        "draft_tokens": 131.0,
+        "accepted_tokens": 60.0,
+        "acceptance": 0.4580152671755725,
+        "mean_accepted_length": 1.9090909090909092,
+        "accepted_by_position": {
+          "1": 24.0,
+          "0": 36.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5454545454545454,
+          "1": 0.36363636363636365
+        }
+      },
+      "wall_ms": 1110.4681640026683,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "prose-2",
+      "prompt_class": "prose",
+      "prompt": "Describe how a database write-ahead log works, why it is written before the data pages, how recovery replays it after a crash, and what trade-offs checkpointing introduces. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A database write-ahead log (WAL) is a critical component of ensuring data durability and consistency in a transactional database system. The core principle of the WAL is that all changes to the database's data pages must be recorded in the log before they are actually written to the data pages on disk. This means that any transaction that modifies data must first write its transaction log entry to the log before the actual data update occurs. This ordering ensures that if a crash occurs, the database can recover to a consistent state by replaying the log entries. The log entries typically contain information such as the transaction ID, the data page being modified, the",
+      "text_sha256": "bce89e9e1705af59a046f2a3ace3bb9b0c2e3e28fd63e208448d784bc9c49356",
+      "timings": {
+        "wall_ms": 1062.447792999592,
+        "prompt_n": 39,
+        "predicted_n": 128,
+        "prompt_ms": 40.329,
+        "predicted_ms": 998.191,
+        "prompt_per_second": 967.0460462694339,
+        "predicted_per_second": 127.23015935827911,
+        "first_token_ms": 48.1273671875,
+        "draft_n": 126,
+        "draft_n_accepted": 64
+      },
+      "spec": {
+        "drafts": 63.0,
+        "draft_tokens": 126.0,
+        "accepted_tokens": 64.0,
+        "acceptance": 0.5079365079365079,
+        "mean_accepted_length": 2.015873015873016,
+        "accepted_by_position": {
+          "1": 21.0,
+          "0": 43.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6825396825396826,
+          "1": 0.3333333333333333
+        }
+      },
+      "wall_ms": 1062.447792999592,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "prose-3",
+      "prompt_class": "prose",
+      "prompt": "Explain how TCP congestion control works. Cover slow start, congestion avoidance, fast retransmit, and the differences between Reno and CUBIC. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " Your response should be in English, and contain at least 5 sentences. TCP congestion control is a set of mechanisms designed to prevent network congestion by dynamically adjusting the transmission rate based on network feedback. The process begins with **slow start**, where the sender increases its congestion window (cwnd) exponentially by doubling it after each successful acknowledgment, allowing rapid initial growth until the network signals congestion. Once the sender reaches a threshold, congestion avoidance takes over, where the cwnd grows more slowly\u2014linearly\u2014by increasing by one segment per round-trip time (RTT), thus reducing the risk of overwhelming the network. **Fast retransmit",
+      "text_sha256": "147a3592f02d1c48ecec49a14cb3a9968b757b5920753ce9eccfe6a947e41372",
+      "timings": {
+        "wall_ms": 1158.2772440015106,
+        "prompt_n": 34,
+        "predicted_n": 128,
+        "prompt_ms": 38.023,
+        "predicted_ms": 1095.844,
+        "prompt_per_second": 894.1956184414696,
+        "predicted_per_second": 115.89240804348064,
+        "first_token_ms": 46.584281250000004,
+        "draft_n": 138,
+        "draft_n_accepted": 57
+      },
+      "spec": {
+        "drafts": 69.0,
+        "draft_tokens": 138.0,
+        "accepted_tokens": 57.0,
+        "acceptance": 0.41304347826086957,
+        "mean_accepted_length": 1.8260869565217392,
+        "accepted_by_position": {
+          "1": 17.0,
+          "0": 40.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5797101449275363,
+          "1": 0.2463768115942029
+        }
+      },
+      "wall_ms": 1158.2772440015106,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "prose-4",
+      "prompt_class": "prose",
+      "prompt": "Describe how a modern garbage collector works, covering mark and sweep, generational collection, write barriers, and compaction. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern garbage collector works by identifying and reclaiming memory that is no longer accessible to the program. One of the most fundamental techniques used is **mark-and-sweep**. In this process, the collector starts from root objects (such as global variables or stack variables) and recursively marks all objects that are reachable through object references. Once the marking phase is complete, the collector identifies all unmarked objects\u2014those that are unreachable\u2014and sweeps them out of memory. While simple and effective, mark-and-sweep can lead to memory fragmentation and is often used as a base for more advanced collectors.\n\nTo improve performance and reduce the overhead of garbage collection",
+      "text_sha256": "b01a48bfbd5e75a68dc0c27a11dc18aded56cce4141ab5afd91b9ebae6feeb75",
+      "timings": {
+        "wall_ms": 1189.4099980017927,
+        "prompt_n": 28,
+        "predicted_n": 128,
+        "prompt_ms": 37.287,
+        "predicted_ms": 1128.38,
+        "prompt_per_second": 750.9319602006061,
+        "predicted_per_second": 112.55073645403142,
+        "first_token_ms": 46.10246875,
+        "draft_n": 144,
+        "draft_n_accepted": 55
+      },
+      "spec": {
+        "drafts": 72.0,
+        "draft_tokens": 144.0,
+        "accepted_tokens": 55.0,
+        "acceptance": 0.3819444444444444,
+        "mean_accepted_length": 1.7638888888888888,
+        "accepted_by_position": {
+          "1": 20.0,
+          "0": 35.0
+        },
+        "acceptance_by_position": {
+          "0": 0.4861111111111111,
+          "1": 0.2777777777777778
+        }
+      },
+      "wall_ms": 1189.4099980017927,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "code-1",
+      "prompt_class": "code",
+      "prompt": "Write a Python function that merges two sorted lists into one sorted list without using sorted(), explain its complexity, and include three unit tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\ndef merge_sorted_lists(list1, list2):\n    \"\"\"\n    Merges two sorted lists into one sorted list.\n    \n    Parameters:\n    list1 (list): First sorted list.\n    list2 (list): Second sorted list.\n    \n    Returns:\n    list: A new sorted list containing all elements from both input lists.\n    \"\"\"\n    result = []\n    i, j = 0, 0\n    \n    # Compare elements from both lists and append the smaller one\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            result",
+      "text_sha256": "dd97d53d7007dfc310a9a0ba4e2fa75dd4a8fb87d47bda4059d5311871839975",
+      "timings": {
+        "wall_ms": 916.4547949985717,
+        "prompt_n": 27,
+        "predicted_n": 128,
+        "prompt_ms": 35.426,
+        "predicted_ms": 858.524,
+        "prompt_per_second": 762.1520916840738,
+        "predicted_per_second": 147.92830485810532,
+        "first_token_ms": 42.133218750000005,
+        "draft_n": 104,
+        "draft_n_accepted": 74
+      },
+      "spec": {
+        "drafts": 52.0,
+        "draft_tokens": 104.0,
+        "accepted_tokens": 74.0,
+        "acceptance": 0.7115384615384616,
+        "mean_accepted_length": 2.4230769230769234,
+        "accepted_by_position": {
+          "1": 32.0,
+          "0": 42.0
+        },
+        "acceptance_by_position": {
+          "0": 0.8076923076923077,
+          "1": 0.6153846153846154
+        }
+      },
+      "wall_ms": 916.4547949985717,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "code-2",
+      "prompt_class": "code",
+      "prompt": "Write a Go function that implements an LRU cache with O(1) get and put using a map and a doubly linked list. Include the struct definitions and a short usage example.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```go\npackage main\n\nimport \"fmt\"\n\ntype Node struct {\n    key   int\n    value interface{}\n    prev  *Node\n    next  *Node\n}\n\ntype LRUCache struct {\n    capacity int\n    mapData  map[int]*Node\n    head     *Node\n    tail     *Node\n}\n\nfunc NewLRUCache(capacity int) *LRUCache {\n    return &LRUCache{\n        capacity: capacity,\n        mapData:  make(map[int]*Node),\n        head:     nil,\n        tail:     nil,\n    }\n}\n\nfunc (l *LRUC",
+      "text_sha256": "5bb2a252ef62c7b2efeed2f358f36cd9eca734f2a23d26bba3fd3c0eb6d05be4",
+      "timings": {
+        "wall_ms": 852.3192619977635,
+        "prompt_n": 37,
+        "predicted_n": 128,
+        "prompt_ms": 40.176,
+        "predicted_ms": 787.894,
+        "prompt_per_second": 920.94782954998,
+        "predicted_per_second": 161.18919550091763,
+        "first_token_ms": 46.331421875000004,
+        "draft_n": 94,
+        "draft_n_accepted": 80
+      },
+      "spec": {
+        "drafts": 47.0,
+        "draft_tokens": 94.0,
+        "accepted_tokens": 80.0,
+        "acceptance": 0.851063829787234,
+        "mean_accepted_length": 2.702127659574468,
+        "accepted_by_position": {
+          "1": 39.0,
+          "0": 41.0
+        },
+        "acceptance_by_position": {
+          "0": 0.8723404255319149,
+          "1": 0.8297872340425532
+        }
+      },
+      "wall_ms": 852.3192619977635,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "code-3",
+      "prompt_class": "code",
+      "prompt": "Write a SQL query that finds the top ten customers by total order value in the last ninety days, including customers with no orders. Explain the join and the index you would add.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain why the query might be slow and how to improve it.\n\n```sql\nSELECT \n    c.customer_id,\n    c.customer_name,\n    COALESCE(SUM(o.order_value), 0) AS total_order_value\nFROM \n    customers c\n    LEFT JOIN orders o ON c.customer_id = o.customer_id \n        AND o.order_date >= CURRENT_DATE - INTERVAL '90 days'\nGROUP BY \n    c.customer_id, c.customer_name\nORDER BY \n    total_order_value DESC\nLIMIT 10;\n```\n\n### Join Explanation:\n- A `LEFT JOIN` is used to include all customers,",
+      "text_sha256": "950007c704857e6d155e0a3a6589a249e80db91d097393fd80753db04ac61ff9",
+      "timings": {
+        "wall_ms": 910.3512780020537,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 37.154,
+        "predicted_ms": 848.337,
+        "prompt_per_second": 968.9400872046078,
+        "predicted_per_second": 149.70465746513472,
+        "first_token_ms": 43.78163281250001,
+        "draft_n": 102,
+        "draft_n_accepted": 75
+      },
+      "spec": {
+        "drafts": 51.0,
+        "draft_tokens": 102.0,
+        "accepted_tokens": 75.0,
+        "acceptance": 0.7352941176470589,
+        "mean_accepted_length": 2.4705882352941178,
+        "accepted_by_position": {
+          "1": 36.0,
+          "0": 39.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7647058823529411,
+          "1": 0.7058823529411765
+        }
+      },
+      "wall_ms": 910.3512780020537,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "code-4",
+      "prompt_class": "code",
+      "prompt": "Write a Rust function that parses a semicolon-separated key-value string into a HashMap, with error handling for duplicate keys and missing values. Include tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\n```rust\nuse std::collections::HashMap;\n\n/// Parses a semicolon-separated key-value string into a HashMap.\n/// \n/// Each key-value pair is separated by a semicolon. The format is `key=value`.\n/// \n/// # Errors\n/// - Returns an error if a key appears more than once (duplicate key).\n/// - Returns an error if a value is missing (missing value).\n/// \n/// # Examples\n/// ```\n/// let input = \"name=John;age=30;city=New York\";\n/// let result = parse_key_value_string(input).unwrap();\n/// assert_eq!(result.get",
+      "text_sha256": "6680c226db71fd722714d3ddb5a6783e9db945cd0665e50e7b0fedbfe998b744",
+      "timings": {
+        "wall_ms": 988.4070900006918,
+        "prompt_n": 30,
+        "predicted_n": 128,
+        "prompt_ms": 38.158,
+        "predicted_ms": 926.981,
+        "prompt_per_second": 786.2047277110959,
+        "predicted_per_second": 137.00388681105653,
+        "first_token_ms": 45.4000390625,
+        "draft_n": 114,
+        "draft_n_accepted": 70
+      },
+      "spec": {
+        "drafts": 57.0,
+        "draft_tokens": 114.0,
+        "accepted_tokens": 70.0,
+        "acceptance": 0.6140350877192983,
+        "mean_accepted_length": 2.2280701754385968,
+        "accepted_by_position": {
+          "1": 30.0,
+          "0": 40.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7017543859649122,
+          "1": 0.5263157894736842
+        }
+      },
+      "wall_ms": 988.4070900006918,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "json-1",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 20 objects describing planets. Each object has keys name, diameter_km, and moons. Output only the JSON, no prose.",
+      "run": 0,
+      "seed": 7,
+      "text": " [{\"name\":\"Mercury\",\"diameter_km\":4879,\"moons\":0},{\"name\":\"Venus\",\"diameter_km\":12104,\"moons\":0},{\"name\":\"Earth\",\"diameter_km\":12756,\"moons\":1},{\"name\":\"Mars\",\"diameter_km\":6792,\"moons\":2},{\"name\":\"Jupiter\",\"diameter_km\":142984,\"moons\":95},{\"name\":\"Saturn\",\"diameter_km\":120536,\"moons\":146},{\"name\":\"Uranus",
+      "text_sha256": "a7560cc817ef306de76013438d250a4c6144428f02b987a3865d2ae0d4ef2e6e",
+      "timings": {
+        "wall_ms": 938.5701960018196,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 34.36,
+        "predicted_ms": 879.552,
+        "prompt_per_second": 931.3154831199068,
+        "predicted_per_second": 144.3916903150695,
+        "first_token_ms": 41.2315,
+        "draft_n": 108,
+        "draft_n_accepted": 73
+      },
+      "spec": {
+        "drafts": 54.0,
+        "draft_tokens": 108.0,
+        "accepted_tokens": 73.0,
+        "acceptance": 0.6759259259259259,
+        "mean_accepted_length": 2.351851851851852,
+        "accepted_by_position": {
+          "1": 33.0,
+          "0": 40.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7407407407407407,
+          "1": 0.6111111111111112
+        }
+      },
+      "wall_ms": 938.5701960018196,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "json-2",
+      "prompt_class": "json",
+      "prompt": "Return a JSON object describing a deployment: service, version, replicas, environment, and a list of three health check objects with path and interval_seconds. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"service\": \"api-service\",\n  \"version\": \"v1.2.0\",\n  \"replicas\": 3,\n  \"environment\": \"production\",\n  \"health_checks\": [\n    {\n      \"path\": \"/healthz\",\n      \"interval_seconds\": 10\n    },\n    {\n      \"path\": \"/ready\",\n      \"interval_seconds\": 15\n    },\n    {\n      \"path\": \"/liveness\",\n      \"interval_seconds\": 20\n    }\n  ]\n}\n```\n\n\n```json\n{\n  \"service\": \"api-service\",\n  \"",
+      "text_sha256": "603d8d920af5c9a02dd56ef28b42fb862e6a7f89209d9dff4ce0857017538513",
+      "timings": {
+        "wall_ms": 847.8012550003768,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 36.256,
+        "predicted_ms": 787.363,
+        "prompt_per_second": 965.3574580759047,
+        "predicted_per_second": 161.2979019842182,
+        "first_token_ms": 42.4072734375,
+        "draft_n": 96,
+        "draft_n_accepted": 79
+      },
+      "spec": {
+        "drafts": 48.0,
+        "draft_tokens": 96.0,
+        "accepted_tokens": 79.0,
+        "acceptance": 0.8229166666666666,
+        "mean_accepted_length": 2.645833333333333,
+        "accepted_by_position": {
+          "1": 37.0,
+          "0": 42.0
+        },
+        "acceptance_by_position": {
+          "0": 0.875,
+          "1": 0.7708333333333334
+        }
+      },
+      "wall_ms": 847.8012550003768,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "json-3",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 15 log entries. Each entry has timestamp, level, service, message, and request_id. Use realistic values. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n[\n  {\n    \"timestamp\": \"2023-10-05T08:15:30Z\",\n    \"level\": \"INFO\",\n    \"service\": \"auth-service\",\n    \"message\": \"User login successful: user_id=12345\",\n    \"request_id\": \"req-789abc\"\n  },\n  {\n    \"timestamp\": \"2023-10-05T08:16:12Z\",\n    \"level\": \"ERROR\",\n    \"service\": \"payment-service\",\n    \"message\": \"Payment",
+      "text_sha256": "6061ca7825c253df934e3c0698fa5a92e6c67f01b3efa273f77697b7ffd6222e",
+      "timings": {
+        "wall_ms": 882.2767889978422,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 38.659,
+        "predicted_ms": 817.56,
+        "prompt_per_second": 905.3519232261569,
+        "predicted_per_second": 155.34028083565735,
+        "first_token_ms": 45.0461875,
+        "draft_n": 99,
+        "draft_n_accepted": 77
+      },
+      "spec": {
+        "drafts": 50.0,
+        "draft_tokens": 99.0,
+        "accepted_tokens": 77.0,
+        "acceptance": 0.7777777777777778,
+        "mean_accepted_length": 2.54,
+        "accepted_by_position": {
+          "1": 35.0,
+          "0": 42.0
+        },
+        "acceptance_by_position": {
+          "0": 0.84,
+          "1": 0.7
+        }
+      },
+      "wall_ms": 882.2767889978422,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "json-4",
+      "prompt_class": "json",
+      "prompt": "Return a JSON schema for a user profile with name, email, age, tags, and addresses. Include types and required fields. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"The user's full name\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"description\": \"The user's email address\"\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 150,\n      \"description",
+      "text_sha256": "61125032e0edbb4f1f95ab79d08d3db5c8de865843df72503c90ca1c0eb188ec",
+      "timings": {
+        "wall_ms": 875.3164289992128,
+        "prompt_n": 31,
+        "predicted_n": 128,
+        "prompt_ms": 37.364,
+        "predicted_ms": 812.736,
+        "prompt_per_second": 829.6756235949043,
+        "predicted_per_second": 156.26230411843454,
+        "first_token_ms": 43.713499999999996,
+        "draft_n": 99,
+        "draft_n_accepted": 77
+      },
+      "spec": {
+        "drafts": 50.0,
+        "draft_tokens": 99.0,
+        "accepted_tokens": 77.0,
+        "acceptance": 0.7777777777777778,
+        "mean_accepted_length": 2.54,
+        "accepted_by_position": {
+          "1": 34.0,
+          "0": 43.0
+        },
+        "acceptance_by_position": {
+          "0": 0.86,
+          "1": 0.68
+        }
+      },
+      "wall_ms": 875.3164289992128,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "math-1",
+      "prompt_class": "math",
+      "prompt": "Solve the equation 3x + 7 = 2x + 19 step by step. Show each algebraic operation and verify the answer.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain the significance of the order of operations in solving equations.\n\nTo solve the equation \\(3x + 7 = 2x + 19\\), we will follow a step-by-step approach, showing each algebraic operation, verify the solution, and explain the importance of the order of operations.\n\n### Step-by-Step Solution:\n\n1. **Start with the given equation:**\n   \\[\n   3x + 7 = 2x + 19\n   \\]\n\n2. **Subtract \\(2x\\) from both sides to isolate the variable terms on one side:**\n   \\[\n  ",
+      "text_sha256": "a0e83071e0a59a0fc83dbc6933a07799d2807e1ec2e11c1d5bf7b4543708de4b",
+      "timings": {
+        "wall_ms": 961.3596739982313,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 34.744,
+        "predicted_ms": 901.475,
+        "prompt_per_second": 921.0223347916187,
+        "predicted_per_second": 140.8802240772068,
+        "first_token_ms": 41.7867734375,
+        "draft_n": 107,
+        "draft_n_accepted": 73
+      },
+      "spec": {
+        "drafts": 54.0,
+        "draft_tokens": 107.0,
+        "accepted_tokens": 73.0,
+        "acceptance": 0.6822429906542056,
+        "mean_accepted_length": 2.351851851851852,
+        "accepted_by_position": {
+          "1": 30.0,
+          "0": 43.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7962962962962963,
+          "1": 0.5555555555555556
+        }
+      },
+      "wall_ms": 961.3596739982313,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "math-2",
+      "prompt_class": "math",
+      "prompt": "A train leaves at 09:15 and travels 240 km at 80 km/h. It stops for 12 minutes. What time does it arrive? Show the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, how long does it take to travel 240 km at 80 km/h?\n\nTo determine the arrival time, let's break down the problem into two parts:\n\n1. **Travel time**:  \n   The train travels 240 km at 80 km/h.  \n   Time = Distance \u00f7 Speed = \\( \\frac{240}{80} = 3 \\) hours.\n\n2. **Stop time**:  \n   The train stops for 12 minutes.\n\n3. **Total time from departure to arrival**:  \n   3 hours + 12 minutes = 3 hours",
+      "text_sha256": "ac052de2bb63f49cfe6290ba268e45b7dc0e611b936c5f85fb612f60b3fb5ab4",
+      "timings": {
+        "wall_ms": 924.222503999772,
+        "prompt_n": 42,
+        "predicted_n": 128,
+        "prompt_ms": 39.798,
+        "predicted_ms": 860.01,
+        "prompt_per_second": 1055.3294135383687,
+        "predicted_per_second": 147.67270148021535,
+        "first_token_ms": 46.516828125,
+        "draft_n": 105,
+        "draft_n_accepted": 74
+      },
+      "spec": {
+        "drafts": 53.0,
+        "draft_tokens": 105.0,
+        "accepted_tokens": 74.0,
+        "acceptance": 0.7047619047619048,
+        "mean_accepted_length": 2.3962264150943398,
+        "accepted_by_position": {
+          "1": 35.0,
+          "0": 39.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7358490566037735,
+          "1": 0.660377358490566
+        }
+      },
+      "wall_ms": 924.222503999772,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "math-3",
+      "prompt_class": "math",
+      "prompt": "Compute the sum of the first 50 positive integers, then the sum of their squares. Show the formulas and the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " To solve this problem, we will compute two things:\n\n1. The **sum of the first 50 positive integers**.\n2. The **sum of the squares of the first 50 positive integers**.\n\nWe'll use well-known formulas from arithmetic and algebra.\n\n---\n\n### **1. Sum of the first 50 positive integers**\n\nThe formula for the sum of the first $ n $ positive integers is:\n\n$$\nS = 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$\n\nFor $ n = 50 $:\n\n$$\nS",
+      "text_sha256": "fbbfe34aaa8ad7b44f3f7fb1de8b50c58c2ecb6c672118131d13863546caf3ff",
+      "timings": {
+        "wall_ms": 880.7673459996295,
+        "prompt_n": 26,
+        "predicted_n": 128,
+        "prompt_ms": 35.315,
+        "predicted_ms": 816.417,
+        "prompt_per_second": 736.2310632875549,
+        "predicted_per_second": 155.5577603112135,
+        "first_token_ms": 41.6932578125,
+        "draft_n": 99,
+        "draft_n_accepted": 77
+      },
+      "spec": {
+        "drafts": 50.0,
+        "draft_tokens": 99.0,
+        "accepted_tokens": 77.0,
+        "acceptance": 0.7777777777777778,
+        "mean_accepted_length": 2.54,
+        "accepted_by_position": {
+          "1": 36.0,
+          "0": 41.0
+        },
+        "acceptance_by_position": {
+          "0": 0.82,
+          "1": 0.72
+        }
+      },
+      "wall_ms": 880.7673459996295,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "math-4",
+      "prompt_class": "math",
+      "prompt": "Find the derivative of f(x) = 3x^4 - 2x^3 + 7x - 5. Then find the equation of the tangent line at x = 2. Show every step.",
+      "run": 0,
+      "seed": 7,
+      "text": " To find the derivative of the function and the equation of the tangent line at a given point, we follow these steps:\n\n---\n\n### **Step 1: Find the derivative of $ f(x) $**\n\nGiven:\n$$\nf(x) = 3x^4 - 2x^3 + 7x - 5\n$$\n\nWe differentiate term by term using the power rule:\n$$\n\\frac{d}{dx}[x^n] = n x^{n-1}\n$$\n\nApply to each term:\n\n- $ \\frac{d}{dx}[3x^4] = 3 \\cdot 4",
+      "text_sha256": "2fb48c89710038218dcbb90c852e3610789729763bc19f24fae1769580a559cd",
+      "timings": {
+        "wall_ms": 909.4815030002792,
+        "prompt_n": 45,
+        "predicted_n": 128,
+        "prompt_ms": 39.516,
+        "predicted_ms": 845.83,
+        "prompt_per_second": 1138.7792286668691,
+        "predicted_per_second": 150.14837496896538,
+        "first_token_ms": 46.124046875,
+        "draft_n": 104,
+        "draft_n_accepted": 75
+      },
+      "spec": {
+        "drafts": 52.0,
+        "draft_tokens": 104.0,
+        "accepted_tokens": 75.0,
+        "acceptance": 0.7211538461538461,
+        "mean_accepted_length": 2.4423076923076925,
+        "accepted_by_position": {
+          "1": 36.0,
+          "0": 39.0
+        },
+        "acceptance_by_position": {
+          "0": 0.75,
+          "1": 0.6923076923076923
+        }
+      },
+      "wall_ms": 909.4815030002792,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "list-1",
+      "prompt_class": "list",
+      "prompt": "List ten practical ways to reduce tail latency in a web service. For each, give a one-sentence explanation and a concrete metric to watch.",
+      "run": 0,
+      "seed": 7,
+      "text": "  \n\n1. **Use a caching layer (e.g., Redis or Memcached)**  \n   - *Explanation*: Caching frequently accessed data reduces the need to fetch from the database or compute-intensive services.  \n   - *Metric*: Cache hit rate (e.g., 95% cache hit rate).  \n\n2. **Optimize database queries (e.g., indexing, query optimization)**  \n   - *Explanation*: Efficient queries reduce database response time, which is a major contributor to tail latency.  \n   - *Metric*: Average query execution time (e.g., <100ms).  \n\n3. **Implement connection pooling",
+      "text_sha256": "b74024aa6d7fd83cb3d233ac8b7e0337d60f95cb99955ee296290ef5d73c061e",
+      "timings": {
+        "wall_ms": 1067.9838849973748,
+        "prompt_n": 29,
+        "predicted_n": 128,
+        "prompt_ms": 33.539,
+        "predicted_ms": 1002.582,
+        "prompt_per_second": 864.6650168460598,
+        "predicted_per_second": 126.67293049346588,
+        "first_token_ms": 41.371671875000004,
+        "draft_n": 121,
+        "draft_n_accepted": 65
+      },
+      "spec": {
+        "drafts": 61.0,
+        "draft_tokens": 121.0,
+        "accepted_tokens": 65.0,
+        "acceptance": 0.5371900826446281,
+        "mean_accepted_length": 2.0655737704918034,
+        "accepted_by_position": {
+          "1": 25.0,
+          "0": 40.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6557377049180327,
+          "1": 0.4098360655737705
+        }
+      },
+      "wall_ms": 1067.9838849973748,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "list-2",
+      "prompt_class": "list",
+      "prompt": "List ten failure modes of a distributed scheduler and, for each, one detection signal and one mitigation.",
+      "run": 0,
+      "seed": 7,
+      "text": " Failure modes of a distributed scheduler can include issues related to communication, coordination, fault tolerance, load balancing, and resource allocation. Below are ten such failure modes, each with a detection signal and a mitigation strategy:\n\n1. **Network Partition (Split Brain)**  \n   - *Detection Signal*: Increased latency or packet loss between nodes; nodes detect no communication with a subset of the cluster.  \n   - *Mitigation*: Implement consensus algorithms (e.g., Raft or Paxos) to detect and resolve split brain; use network health checks and fencing mechanisms to isolate partitions.\n\n2. **Node Failure (Crash or Unavailability)**  \n",
+      "text_sha256": "8519479d0c9545e4caec3198ffd7cfa11f33d5ea861c2945b38548c19bec113a",
+      "timings": {
+        "wall_ms": 1115.2550430015253,
+        "prompt_n": 20,
+        "predicted_n": 128,
+        "prompt_ms": 36.817,
+        "predicted_ms": 1048.924,
+        "prompt_per_second": 543.2273134693212,
+        "predicted_per_second": 121.07645549153229,
+        "first_token_ms": 45.01171875,
+        "draft_n": 130,
+        "draft_n_accepted": 62
+      },
+      "spec": {
+        "drafts": 65.0,
+        "draft_tokens": 130.0,
+        "accepted_tokens": 62.0,
+        "acceptance": 0.47692307692307695,
+        "mean_accepted_length": 1.953846153846154,
+        "accepted_by_position": {
+          "1": 26.0,
+          "0": 36.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5538461538461539,
+          "1": 0.4
+        }
+      },
+      "wall_ms": 1115.2550430015253,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "list-3",
+      "prompt_class": "list",
+      "prompt": "List ten things to check when a GPU inference server is slower than expected. Order them from cheapest to most expensive to test.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, provide a brief explanation for each.\n\nWe are looking for ten things to check when a GPU inference server is slower than expected, ordered from cheapest to most expensive to test. Each should have a brief explanation.\n\n---\n\n**1. Check GPU Utilization (via nvidia-smi or similar)**  \n*Cost: Cheapest*  \nCheck if the GPU is being used efficiently. Low utilization (e.g., <30%) may indicate idle time or inefficient batching. High utilization but still slow inference might point to bottlenecks in data transfer or CPU/GPU communication.\n\n**2. Verify Model Size and Complexity**  \n*Cost",
+      "text_sha256": "520e2fa648e1d6681099c6593778e95ff5c220bf6a39e8b09e3574473e4c0e0a",
+      "timings": {
+        "wall_ms": 1215.5093389992544,
+        "prompt_n": 25,
+        "predicted_n": 128,
+        "prompt_ms": 35.265,
+        "predicted_ms": 1152.689,
+        "prompt_per_second": 708.9181908407769,
+        "predicted_per_second": 110.17715966752523,
+        "first_token_ms": 44.2703828125,
+        "draft_n": 142,
+        "draft_n_accepted": 55
+      },
+      "spec": {
+        "drafts": 71.0,
+        "draft_tokens": 142.0,
+        "accepted_tokens": 55.0,
+        "acceptance": 0.3873239436619718,
+        "mean_accepted_length": 1.7746478873239435,
+        "accepted_by_position": {
+          "1": 20.0,
+          "0": 35.0
+        },
+        "acceptance_by_position": {
+          "0": 0.49295774647887325,
+          "1": 0.28169014084507044
+        }
+      },
+      "wall_ms": 1215.5093389992544,
+      "matches_baseline": true
+    },
+    {
+      "config": "n2",
+      "speculative": true,
+      "n_max": 2,
+      "p_min": null,
+      "prompt_id": "list-4",
+      "prompt_class": "list",
+      "prompt": "List ten design decisions that affect the memory footprint of a large language model serving system, with the trade-off for each.",
+      "run": 0,
+      "seed": 7,
+      "text": " 1. **Model Size and Architecture**  \n   - *Decision*: Choosing between a larger model (e.g., 13B vs. 7B parameters) or a smaller, more efficient architecture (e.g., distilled or quantized models).  \n   - *Trade-off*: Larger models offer better performance and accuracy but significantly increase memory usage. Smaller models reduce memory footprint but may sacrifice performance and context understanding.\n\n2. **Quantization Level**  \n   - *Decision*: Applying quantization (e.g., 8-bit, 4-bit, or 1-bit) to reduce model weights from 32-bit",
+      "text_sha256": "c7d0c906e9a6201465f65c01c28bd25b8dbb4654f510df68f7490c9423019d26",
+      "timings": {
+        "wall_ms": 1099.8533420024614,
+        "prompt_n": 24,
+        "predicted_n": 128,
+        "prompt_ms": 36.747,
+        "predicted_ms": 1033.088,
+        "prompt_per_second": 653.1145399624459,
+        "predicted_per_second": 122.93241234047827,
+        "first_token_ms": 44.818,
+        "draft_n": 126,
+        "draft_n_accepted": 63
+      },
+      "spec": {
+        "drafts": 63.0,
+        "draft_tokens": 126.0,
+        "accepted_tokens": 63.0,
+        "acceptance": 0.5,
+        "mean_accepted_length": 2.0,
+        "accepted_by_position": {
+          "1": 22.0,
+          "0": 41.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6507936507936508,
+          "1": 0.3492063492063492
+        }
+      },
+      "wall_ms": 1099.8533420024614,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "prose-1",
+      "prompt_class": "prose",
+      "prompt": "Explain in detail how a modern CPU pipeline works, covering fetch, decode, out-of-order execution, register renaming, branch prediction, and the memory hierarchy. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern CPU pipeline is a sophisticated system designed to maximize instruction throughput and minimize execution time by breaking down the execution of a program into a series of stages. The most fundamental stages are **fetch**, **decode**, and **execute**, which are typically followed by **memory access** and **write-back**. In a basic pipeline, each instruction moves through these stages sequentially, allowing one instruction to be processed at a time in each stage. However, modern CPUs go far beyond this simple model by incorporating advanced techniques such as **out-of-order execution**, **register renaming**, **branch prediction**, and a highly optimized **memory hierarchy** to achieve greater",
+      "text_sha256": "667c694250e8be73a201d2bf4c381f168a96f62c5a30856207e254ecd32ba077",
+      "timings": {
+        "wall_ms": 1354.912629001774,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 47.859,
+        "predicted_ms": 1299.123,
+        "prompt_per_second": 752.2096157462546,
+        "predicted_per_second": 97.75825691639668,
+        "first_token_ms": 58.008398437500006,
+        "draft_n": 233,
+        "draft_n_accepted": 67
+      },
+      "spec": {
+        "drafts": 59.0,
+        "draft_tokens": 233.0,
+        "accepted_tokens": 67.0,
+        "acceptance": 0.2875536480686695,
+        "mean_accepted_length": 2.135593220338983,
+        "accepted_by_position": {
+          "3": 7.0,
+          "1": 20.0,
+          "2": 10.0,
+          "0": 30.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5084745762711864,
+          "1": 0.3389830508474576,
+          "2": 0.1694915254237288,
+          "3": 0.11864406779661017
+        }
+      },
+      "wall_ms": 1354.912629001774,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "prose-2",
+      "prompt_class": "prose",
+      "prompt": "Describe how a database write-ahead log works, why it is written before the data pages, how recovery replays it after a crash, and what trade-offs checkpointing introduces. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A database write-ahead log (WAL) is a critical component of ensuring data durability and consistency in a transactional database system. The core principle of the WAL is that all changes to the database's data pages must be recorded in the log before they are actually written to the data pages on disk. This means that any transaction that modifies data must first update the log with a record of the change\u2014typically including the transaction ID, the data page affected, the old and new values, and a timestamp\u2014before the actual data is updated in memory or on disk. This ordering ensures that if a crash occurs, the database can recover to a",
+      "text_sha256": "1490b770e1f80a9b1b97073dd76867d95fbe976d6e82097207def92e8176e1ac",
+      "timings": {
+        "wall_ms": 1385.498302999622,
+        "prompt_n": 39,
+        "predicted_n": 128,
+        "prompt_ms": 40.803,
+        "predicted_ms": 1321.25,
+        "prompt_per_second": 955.8120726417176,
+        "predicted_per_second": 96.12109744560075,
+        "first_token_ms": 51.125265625,
+        "draft_n": 234,
+        "draft_n_accepted": 67
+      },
+      "spec": {
+        "drafts": 59.0,
+        "draft_tokens": 234.0,
+        "accepted_tokens": 67.0,
+        "acceptance": 0.2863247863247863,
+        "mean_accepted_length": 2.135593220338983,
+        "accepted_by_position": {
+          "3": 4.0,
+          "1": 18.0,
+          "2": 7.0,
+          "0": 38.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6440677966101694,
+          "1": 0.3050847457627119,
+          "2": 0.11864406779661017,
+          "3": 0.06779661016949153
+        }
+      },
+      "wall_ms": 1385.498302999622,
+      "matches_baseline": false
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "prose-3",
+      "prompt_class": "prose",
+      "prompt": "Explain how TCP congestion control works. Cover slow start, congestion avoidance, fast retransmit, and the differences between Reno and CUBIC. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " Your response should be in English, and contain at least 5 sentences. TCP congestion control is a set of mechanisms designed to prevent network congestion by dynamically adjusting the transmission rate based on network feedback. The process begins with **slow start**, where the sender increases its congestion window (cwnd) exponentially by doubling it after each successful acknowledgment, allowing rapid initial growth until the network signals congestion. Once the sender reaches a threshold, congestion avoidance takes over, where the cwnd grows more slowly\u2014linearly\u2014by increasing by one segment per round-trip time (RTT), thus reducing the risk of overwhelming the network. **Fast retransmit",
+      "text_sha256": "147a3592f02d1c48ecec49a14cb3a9968b757b5920753ce9eccfe6a947e41372",
+      "timings": {
+        "wall_ms": 1370.469060002506,
+        "prompt_n": 34,
+        "predicted_n": 128,
+        "prompt_ms": 39.466,
+        "predicted_ms": 1306.672,
+        "prompt_per_second": 861.5010388688999,
+        "predicted_per_second": 97.19348084293533,
+        "first_token_ms": 49.674375,
+        "draft_n": 239,
+        "draft_n_accepted": 67
+      },
+      "spec": {
+        "drafts": 60.0,
+        "draft_tokens": 239.0,
+        "accepted_tokens": 67.0,
+        "acceptance": 0.2803347280334728,
+        "mean_accepted_length": 2.1166666666666667,
+        "accepted_by_position": {
+          "3": 4.0,
+          "1": 18.0,
+          "2": 9.0,
+          "0": 36.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6,
+          "1": 0.3,
+          "2": 0.15,
+          "3": 0.06666666666666667
+        }
+      },
+      "wall_ms": 1370.469060002506,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "prose-4",
+      "prompt_class": "prose",
+      "prompt": "Describe how a modern garbage collector works, covering mark and sweep, generational collection, write barriers, and compaction. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern garbage collector works by identifying and reclaiming memory that is no longer accessible to the program. One of the most fundamental techniques used is **mark-and-sweep**. In this process, the collector first \"marks\" all objects that are still reachable from the root set (such as global variables or stack frames), and then \"sweeps\" through the heap to identify and free any unmarked objects. While simple and effective, traditional mark-and-sweep can lead to memory fragmentation and high pause times. To address these issues, modern garbage collectors often incorporate **generational collection**, which divides the heap into different regions based on object",
+      "text_sha256": "ac2509a24cee39689aaee05d847a061194248d9ed05b24b4f03e1fa8de25499d",
+      "timings": {
+        "wall_ms": 1310.7583499986504,
+        "prompt_n": 28,
+        "predicted_n": 128,
+        "prompt_ms": 35.813,
+        "predicted_ms": 1250.407,
+        "prompt_per_second": 781.838997012258,
+        "predicted_per_second": 101.56692980765465,
+        "first_token_ms": 45.581804687500004,
+        "draft_n": 218,
+        "draft_n_accepted": 71
+      },
+      "spec": {
+        "drafts": 56.0,
+        "draft_tokens": 218.0,
+        "accepted_tokens": 71.0,
+        "acceptance": 0.3256880733944954,
+        "mean_accepted_length": 2.267857142857143,
+        "accepted_by_position": {
+          "3": 9.0,
+          "1": 19.0,
+          "2": 11.0,
+          "0": 32.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5714285714285714,
+          "1": 0.3392857142857143,
+          "2": 0.19642857142857142,
+          "3": 0.16071428571428573
+        }
+      },
+      "wall_ms": 1310.7583499986504,
+      "matches_baseline": false
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "code-1",
+      "prompt_class": "code",
+      "prompt": "Write a Python function that merges two sorted lists into one sorted list without using sorted(), explain its complexity, and include three unit tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\ndef merge_sorted_lists(list1, list2):\n    \"\"\"\n    Merges two sorted lists into one sorted list.\n    \n    Parameters:\n    list1 (list): First sorted list.\n    list2 (list): Second sorted list.\n    \n    Returns:\n    list: A new sorted list containing all elements from both input lists.\n    \"\"\"\n    result = []\n    i, j = 0, 0\n    \n    # Compare elements from both lists and append the smaller one\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            result",
+      "text_sha256": "dd97d53d7007dfc310a9a0ba4e2fa75dd4a8fb87d47bda4059d5311871839975",
+      "timings": {
+        "wall_ms": 911.4132920003613,
+        "prompt_n": 27,
+        "predicted_n": 128,
+        "prompt_ms": 34.89,
+        "predicted_ms": 853.193,
+        "prompt_per_second": 773.8607050730868,
+        "predicted_per_second": 148.85260427593758,
+        "first_token_ms": 41.5555703125,
+        "draft_n": 150,
+        "draft_n_accepted": 89
+      },
+      "spec": {
+        "drafts": 38.0,
+        "draft_tokens": 150.0,
+        "accepted_tokens": 89.0,
+        "acceptance": 0.5933333333333334,
+        "mean_accepted_length": 3.3421052631578947,
+        "accepted_by_position": {
+          "3": 16.0,
+          "1": 23.0,
+          "2": 20.0,
+          "0": 30.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7894736842105263,
+          "1": 0.6052631578947368,
+          "2": 0.5263157894736842,
+          "3": 0.42105263157894735
+        }
+      },
+      "wall_ms": 911.4132920003613,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "code-2",
+      "prompt_class": "code",
+      "prompt": "Write a Go function that implements an LRU cache with O(1) get and put using a map and a doubly linked list. Include the struct definitions and a short usage example.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```go\npackage main\n\nimport \"fmt\"\n\ntype Node struct {\n    key   int\n    value interface{}\n    prev  *Node\n    next  *Node\n}\n\ntype LRUCache struct {\n    capacity int\n    mapData  map[int]*Node\n    head     *Node\n    tail     *Node\n}\n\nfunc NewLRUCache(capacity int) *LRUCache {\n    return &LRUCache{\n        capacity: capacity,\n        mapData:  make(map[int]*Node),\n        head:     nil,\n        tail:     nil,\n    }\n}\n\nfunc (l *LRUC",
+      "text_sha256": "5bb2a252ef62c7b2efeed2f358f36cd9eca734f2a23d26bba3fd3c0eb6d05be4",
+      "timings": {
+        "wall_ms": 776.0642680004821,
+        "prompt_n": 37,
+        "predicted_n": 128,
+        "prompt_ms": 36.914,
+        "predicted_ms": 716.498,
+        "prompt_per_second": 1002.3297393942677,
+        "predicted_per_second": 177.25101814659635,
+        "first_token_ms": 42.511640625,
+        "draft_n": 126,
+        "draft_n_accepted": 95
+      },
+      "spec": {
+        "drafts": 32.0,
+        "draft_tokens": 126.0,
+        "accepted_tokens": 95.0,
+        "acceptance": 0.753968253968254,
+        "mean_accepted_length": 3.96875,
+        "accepted_by_position": {
+          "3": 20.0,
+          "1": 25.0,
+          "2": 21.0,
+          "0": 29.0
+        },
+        "acceptance_by_position": {
+          "0": 0.90625,
+          "1": 0.78125,
+          "2": 0.65625,
+          "3": 0.625
+        }
+      },
+      "wall_ms": 776.0642680004821,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "code-3",
+      "prompt_class": "code",
+      "prompt": "Write a SQL query that finds the top ten customers by total order value in the last ninety days, including customers with no orders. Explain the join and the index you would add.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain why the query might be slow and how to improve it.\n\n```sql\nSELECT \n    c.customer_id,\n    c.customer_name,\n    COALESCE(SUM(o.order_value), 0) AS total_order_value\nFROM \n    customers c\n    LEFT JOIN orders o ON c.customer_id = o.customer_id \n        AND o.order_date >= CURRENT_DATE - INTERVAL '90 days'\nGROUP BY \n    c.customer_id, c.customer_name\nORDER BY \n    total_order_value DESC\nLIMIT 10;\n```\n\n### Join Explanation:\n- A **LEFT JOIN** is used to include all customers,",
+      "text_sha256": "2dcdff231fac572fbc7a4c668ab68834e4a7dbe6d446b508474ceef72b005e28",
+      "timings": {
+        "wall_ms": 918.1541910002124,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 36.317,
+        "predicted_ms": 858.182,
+        "prompt_per_second": 991.2713054492386,
+        "predicted_per_second": 147.98725678236084,
+        "first_token_ms": 43.021546875,
+        "draft_n": 156,
+        "draft_n_accepted": 88
+      },
+      "spec": {
+        "drafts": 39.0,
+        "draft_tokens": 156.0,
+        "accepted_tokens": 88.0,
+        "acceptance": 0.5641025641025641,
+        "mean_accepted_length": 3.2564102564102564,
+        "accepted_by_position": {
+          "3": 17.0,
+          "1": 23.0,
+          "2": 19.0,
+          "0": 29.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7435897435897436,
+          "1": 0.5897435897435898,
+          "2": 0.48717948717948717,
+          "3": 0.4358974358974359
+        }
+      },
+      "wall_ms": 918.1541910002124,
+      "matches_baseline": false
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "code-4",
+      "prompt_class": "code",
+      "prompt": "Write a Rust function that parses a semicolon-separated key-value string into a HashMap, with error handling for duplicate keys and missing values. Include tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\n```rust\nuse std::collections::HashMap;\n\n/// Parses a semicolon-separated key-value string into a HashMap.\n/// \n/// Each key-value pair is separated by a semicolon. The format is `key=value`.\n/// \n/// # Errors\n/// - Returns an error if a key appears more than once (duplicate key).\n/// - Returns an error if a value is missing (missing value).\n/// \n/// # Examples\n/// ```\n/// let input = \"name=John;age=30;city=New York\";\n/// let result = parse_key_value_string(input).unwrap();\n/// assert_eq!(result.get",
+      "text_sha256": "6680c226db71fd722714d3ddb5a6783e9db945cd0665e50e7b0fedbfe998b744",
+      "timings": {
+        "wall_ms": 993.738082001073,
+        "prompt_n": 30,
+        "predicted_n": 128,
+        "prompt_ms": 35.451,
+        "predicted_ms": 932.935,
+        "prompt_per_second": 846.2384700008463,
+        "predicted_per_second": 136.12952670872036,
+        "first_token_ms": 42.739554687500004,
+        "draft_n": 168,
+        "draft_n_accepted": 84
+      },
+      "spec": {
+        "drafts": 42.0,
+        "draft_tokens": 168.0,
+        "accepted_tokens": 84.0,
+        "acceptance": 0.5,
+        "mean_accepted_length": 3.0,
+        "accepted_by_position": {
+          "3": 13.0,
+          "1": 22.0,
+          "2": 18.0,
+          "0": 31.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7380952380952381,
+          "1": 0.5238095238095238,
+          "2": 0.42857142857142855,
+          "3": 0.30952380952380953
+        }
+      },
+      "wall_ms": 993.738082001073,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "json-1",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 20 objects describing planets. Each object has keys name, diameter_km, and moons. Output only the JSON, no prose.",
+      "run": 0,
+      "seed": 7,
+      "text": " [{\"name\":\"Mercury\",\"diameter_km\":4879,\"moons\":0},{\"name\":\"Venus\",\"diameter_km\":12104,\"moons\":0},{\"name\":\"Earth\",\"diameter_km\":12756,\"moons\":1},{\"name\":\"Mars\",\"diameter_km\":6792,\"moons\":2},{\"name\":\"Jupiter\",\"diameter_km\":142984,\"moons\":95},{\"name\":\"Saturn\",\"diameter_km\":120536,\"moons\":146},{\"name\":\"Uranus",
+      "text_sha256": "a7560cc817ef306de76013438d250a4c6144428f02b987a3865d2ae0d4ef2e6e",
+      "timings": {
+        "wall_ms": 969.3356749994564,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 37.039,
+        "predicted_ms": 909.724,
+        "prompt_per_second": 863.9542104268473,
+        "predicted_per_second": 139.60278062357375,
+        "first_token_ms": 44.14621875,
+        "draft_n": 164,
+        "draft_n_accepted": 85
+      },
+      "spec": {
+        "drafts": 41.0,
+        "draft_tokens": 164.0,
+        "accepted_tokens": 85.0,
+        "acceptance": 0.5182926829268293,
+        "mean_accepted_length": 3.073170731707317,
+        "accepted_by_position": {
+          "3": 16.0,
+          "1": 22.0,
+          "2": 18.0,
+          "0": 29.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7073170731707317,
+          "1": 0.5365853658536586,
+          "2": 0.43902439024390244,
+          "3": 0.3902439024390244
+        }
+      },
+      "wall_ms": 969.3356749994564,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "json-2",
+      "prompt_class": "json",
+      "prompt": "Return a JSON object describing a deployment: service, version, replicas, environment, and a list of three health check objects with path and interval_seconds. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"service\": \"api-service\",\n  \"version\": \"v1.2.0\",\n  \"replicas\": 3,\n  \"environment\": \"production\",\n  \"health_checks\": [\n    {\n      \"path\": \"/healthz\",\n      \"interval_seconds\": 10\n    },\n    {\n      \"path\": \"/ready\",\n      \"interval_seconds\": 15\n    },\n    {\n      \"path\": \"/liveness\",\n      \"interval_seconds\": 20\n    }\n  ]\n}\n```\n\n\n```json\n{\n  \"service\": \"api-service\",\n  \"",
+      "text_sha256": "603d8d920af5c9a02dd56ef28b42fb862e6a7f89209d9dff4ce0857017538513",
+      "timings": {
+        "wall_ms": 774.730394998187,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 39.578,
+        "predicted_ms": 710.271,
+        "prompt_per_second": 884.3296781039971,
+        "predicted_per_second": 178.80499133429353,
+        "first_token_ms": 45.1269921875,
+        "draft_n": 128,
+        "draft_n_accepted": 95
+      },
+      "spec": {
+        "drafts": 32.0,
+        "draft_tokens": 128.0,
+        "accepted_tokens": 95.0,
+        "acceptance": 0.7421875,
+        "mean_accepted_length": 3.96875,
+        "accepted_by_position": {
+          "3": 21.0,
+          "1": 23.0,
+          "2": 22.0,
+          "0": 29.0
+        },
+        "acceptance_by_position": {
+          "0": 0.90625,
+          "1": 0.71875,
+          "2": 0.6875,
+          "3": 0.65625
+        }
+      },
+      "wall_ms": 774.730394998187,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "json-3",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 15 log entries. Each entry has timestamp, level, service, message, and request_id. Use realistic values. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n[\n  {\n    \"timestamp\": \"2023-10-05T08:15:30Z\",\n    \"level\": \"INFO\",\n    \"service\": \"auth-service\",\n    \"message\": \"User login successful: user_id=12345\",\n    \"request_id\": \"req-789abc\"\n  },\n  {\n    \"timestamp\": \"2023-10-05T08:16:12Z\",\n    \"level\": \"ERROR\",\n    \"service\": \"payment-service\",\n    \"message\": \"Payment",
+      "text_sha256": "6061ca7825c253df934e3c0698fa5a92e6c67f01b3efa273f77697b7ffd6222e",
+      "timings": {
+        "wall_ms": 848.6785370005236,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 34.317,
+        "predicted_ms": 789.852,
+        "prompt_per_second": 1019.902672145001,
+        "predicted_per_second": 160.78961628254407,
+        "first_token_ms": 40.48771875,
+        "draft_n": 142,
+        "draft_n_accepted": 91
+      },
+      "spec": {
+        "drafts": 36.0,
+        "draft_tokens": 142.0,
+        "accepted_tokens": 91.0,
+        "acceptance": 0.6408450704225352,
+        "mean_accepted_length": 3.5277777777777777,
+        "accepted_by_position": {
+          "3": 17.0,
+          "1": 25.0,
+          "2": 19.0,
+          "0": 30.0
+        },
+        "acceptance_by_position": {
+          "0": 0.8333333333333334,
+          "1": 0.6944444444444444,
+          "2": 0.5277777777777778,
+          "3": 0.4722222222222222
+        }
+      },
+      "wall_ms": 848.6785370005236,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "json-4",
+      "prompt_class": "json",
+      "prompt": "Return a JSON schema for a user profile with name, email, age, tags, and addresses. Include types and required fields. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"The user's full name\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"description\": \"The user's email address\"\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 150,\n      \"description",
+      "text_sha256": "61125032e0edbb4f1f95ab79d08d3db5c8de865843df72503c90ca1c0eb188ec",
+      "timings": {
+        "wall_ms": 838.6663189994579,
+        "prompt_n": 31,
+        "predicted_n": 128,
+        "prompt_ms": 34.154,
+        "predicted_ms": 779.954,
+        "prompt_per_second": 907.6535691280669,
+        "predicted_per_second": 162.83011562220338,
+        "first_token_ms": 40.247390625,
+        "draft_n": 140,
+        "draft_n_accepted": 92
+      },
+      "spec": {
+        "drafts": 35.0,
+        "draft_tokens": 140.0,
+        "accepted_tokens": 92.0,
+        "acceptance": 0.6571428571428571,
+        "mean_accepted_length": 3.6285714285714286,
+        "accepted_by_position": {
+          "3": 18.0,
+          "1": 23.0,
+          "2": 20.0,
+          "0": 31.0
+        },
+        "acceptance_by_position": {
+          "0": 0.8857142857142857,
+          "1": 0.6571428571428571,
+          "2": 0.5714285714285714,
+          "3": 0.5142857142857142
+        }
+      },
+      "wall_ms": 838.6663189994579,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "math-1",
+      "prompt_class": "math",
+      "prompt": "Solve the equation 3x + 7 = 2x + 19 step by step. Show each algebraic operation and verify the answer.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain the significance of the order of operations in solving equations.\n\nTo solve the equation \\(3x + 7 = 2x + 19\\), we will follow a step-by-step approach, showing each algebraic operation, verify the solution, and explain the importance of the order of operations.\n\n### Step-by-Step Solution:\n\n1. **Start with the given equation:**\n   \\[\n   3x + 7 = 2x + 19\n   \\]\n\n2. **Subtract \\(2x\\) from both sides to isolate the variable terms on one side:**\n   \\[\n  ",
+      "text_sha256": "a0e83071e0a59a0fc83dbc6933a07799d2807e1ec2e11c1d5bf7b4543708de4b",
+      "timings": {
+        "wall_ms": 916.532819999702,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 32.725,
+        "predicted_ms": 860.28,
+        "prompt_per_second": 977.8456837280366,
+        "predicted_per_second": 147.62635421025715,
+        "first_token_ms": 39.4459375,
+        "draft_n": 154,
+        "draft_n_accepted": 88
+      },
+      "spec": {
+        "drafts": 39.0,
+        "draft_tokens": 154.0,
+        "accepted_tokens": 88.0,
+        "acceptance": 0.5714285714285714,
+        "mean_accepted_length": 3.2564102564102564,
+        "accepted_by_position": {
+          "3": 15.0,
+          "1": 24.0,
+          "2": 19.0,
+          "0": 30.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7692307692307693,
+          "1": 0.6153846153846154,
+          "2": 0.48717948717948717,
+          "3": 0.38461538461538464
+        }
+      },
+      "wall_ms": 916.532819999702,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "math-2",
+      "prompt_class": "math",
+      "prompt": "A train leaves at 09:15 and travels 240 km at 80 km/h. It stops for 12 minutes. What time does it arrive? Show the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, how long does it take to travel 240 km at 80 km/h?\n\nTo determine the arrival time, let's break down the problem into two parts:\n\n1. **Travel time**:  \n   The train travels 240 km at 80 km/h.  \n   Time = Distance \u00f7 Speed = \\( \\frac{240}{80} = 3 \\) hours.\n\n2. **Stop time**:  \n   The train stops for 12 minutes.\n\n3. **Total time from departure to arrival**:  \n   3 hours + 12 minutes = 3 hours",
+      "text_sha256": "ac052de2bb63f49cfe6290ba268e45b7dc0e611b936c5f85fb612f60b3fb5ab4",
+      "timings": {
+        "wall_ms": 887.3092689973419,
+        "prompt_n": 42,
+        "predicted_n": 128,
+        "prompt_ms": 37.414,
+        "predicted_ms": 825.487,
+        "prompt_per_second": 1122.5744373763832,
+        "predicted_per_second": 153.8485766583847,
+        "first_token_ms": 43.8631171875,
+        "draft_n": 148,
+        "draft_n_accepted": 89
+      },
+      "spec": {
+        "drafts": 37.0,
+        "draft_tokens": 148.0,
+        "accepted_tokens": 89.0,
+        "acceptance": 0.6013513513513513,
+        "mean_accepted_length": 3.4054054054054053,
+        "accepted_by_position": {
+          "3": 18.0,
+          "1": 22.0,
+          "2": 21.0,
+          "0": 28.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7567567567567568,
+          "1": 0.5945945945945946,
+          "2": 0.5675675675675675,
+          "3": 0.4864864864864865
+        }
+      },
+      "wall_ms": 887.3092689973419,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "math-3",
+      "prompt_class": "math",
+      "prompt": "Compute the sum of the first 50 positive integers, then the sum of their squares. Show the formulas and the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " To solve this problem, we will compute two things:\n\n1. The **sum of the first 50 positive integers**.\n2. The **sum of the squares of the first 50 positive integers**.\n\nWe'll use well-known formulas from arithmetic and algebra.\n\n---\n\n### **1. Sum of the first 50 positive integers**\n\nThe formula for the sum of the first $ n $ positive integers is:\n\n$$\nS = 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$\n\nFor $ n = 50 $:\n\n$$\nS",
+      "text_sha256": "fbbfe34aaa8ad7b44f3f7fb1de8b50c58c2ecb6c672118131d13863546caf3ff",
+      "timings": {
+        "wall_ms": 871.303796000575,
+        "prompt_n": 26,
+        "predicted_n": 128,
+        "prompt_ms": 38.546,
+        "predicted_ms": 807.225,
+        "prompt_per_second": 674.5187568100451,
+        "predicted_per_second": 157.32912137260368,
+        "first_token_ms": 44.8524453125,
+        "draft_n": 144,
+        "draft_n_accepted": 90
+      },
+      "spec": {
+        "drafts": 36.0,
+        "draft_tokens": 144.0,
+        "accepted_tokens": 90.0,
+        "acceptance": 0.625,
+        "mean_accepted_length": 3.5,
+        "accepted_by_position": {
+          "3": 19.0,
+          "1": 23.0,
+          "2": 21.0,
+          "0": 27.0
+        },
+        "acceptance_by_position": {
+          "0": 0.75,
+          "1": 0.6388888888888888,
+          "2": 0.5833333333333334,
+          "3": 0.5277777777777778
+        }
+      },
+      "wall_ms": 871.303796000575,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "math-4",
+      "prompt_class": "math",
+      "prompt": "Find the derivative of f(x) = 3x^4 - 2x^3 + 7x - 5. Then find the equation of the tangent line at x = 2. Show every step.",
+      "run": 0,
+      "seed": 7,
+      "text": " To find the derivative of the function and the equation of the tangent line at a given point, we follow these steps:\n\n---\n\n### **Step 1: Find the derivative of $ f(x) $**\n\nGiven:\n$$\nf(x) = 3x^4 - 2x^3 + 7x - 5\n$$\n\nWe differentiate term by term using the power rule:\n$$\n\\frac{d}{dx}[x^n] = n x^{n-1}\n$$\n\nApply to each term:\n\n- $ \\frac{d}{dx}[3x^4] = 3 \\cdot 4",
+      "text_sha256": "2fb48c89710038218dcbb90c852e3610789729763bc19f24fae1769580a559cd",
+      "timings": {
+        "wall_ms": 894.4814120004594,
+        "prompt_n": 45,
+        "predicted_n": 128,
+        "prompt_ms": 41.417,
+        "predicted_ms": 826.842,
+        "prompt_per_second": 1086.5103701378662,
+        "predicted_per_second": 153.59645494544304,
+        "first_token_ms": 47.876703125,
+        "draft_n": 147,
+        "draft_n_accepted": 90
+      },
+      "spec": {
+        "drafts": 37.0,
+        "draft_tokens": 147.0,
+        "accepted_tokens": 90.0,
+        "acceptance": 0.6122448979591837,
+        "mean_accepted_length": 3.4324324324324325,
+        "accepted_by_position": {
+          "3": 15.0,
+          "1": 24.0,
+          "2": 23.0,
+          "0": 28.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7567567567567568,
+          "1": 0.6486486486486487,
+          "2": 0.6216216216216216,
+          "3": 0.40540540540540543
+        }
+      },
+      "wall_ms": 894.4814120004594,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "list-1",
+      "prompt_class": "list",
+      "prompt": "List ten practical ways to reduce tail latency in a web service. For each, give a one-sentence explanation and a concrete metric to watch.",
+      "run": 0,
+      "seed": 7,
+      "text": "  \n\n1. **Use a caching layer (e.g., Redis or Memcached)**  \n   - *Explanation*: Caching frequently accessed data reduces the need to fetch from the database or compute-intensive services.  \n   - *Metric*: Cache hit rate (e.g., 95% cache hit rate).  \n\n2. **Optimize database queries (e.g., indexing, query optimization)**  \n   - *Explanation*: Efficient queries reduce database response time, which is a major contributor to tail latency.  \n   - *Metric*: Average query execution time (e.g., <100ms).  \n\n3. **Implement connection pooling",
+      "text_sha256": "b74024aa6d7fd83cb3d233ac8b7e0337d60f95cb99955ee296290ef5d73c061e",
+      "timings": {
+        "wall_ms": 1191.3627899994026,
+        "prompt_n": 29,
+        "predicted_n": 128,
+        "prompt_ms": 32.532,
+        "predicted_ms": 1127.697,
+        "prompt_per_second": 891.429976638387,
+        "predicted_per_second": 112.61890383675757,
+        "first_token_ms": 41.3421328125,
+        "draft_n": 202,
+        "draft_n_accepted": 75
+      },
+      "spec": {
+        "drafts": 51.0,
+        "draft_tokens": 202.0,
+        "accepted_tokens": 75.0,
+        "acceptance": 0.3712871287128713,
+        "mean_accepted_length": 2.4705882352941178,
+        "accepted_by_position": {
+          "3": 11.0,
+          "1": 18.0,
+          "2": 14.0,
+          "0": 32.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6274509803921569,
+          "1": 0.35294117647058826,
+          "2": 0.27450980392156865,
+          "3": 0.21568627450980393
+        }
+      },
+      "wall_ms": 1191.3627899994026,
+      "matches_baseline": true
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "list-2",
+      "prompt_class": "list",
+      "prompt": "List ten failure modes of a distributed scheduler and, for each, one detection signal and one mitigation.",
+      "run": 0,
+      "seed": 7,
+      "text": " Failure modes of a distributed scheduler can include issues related to communication, coordination, fault tolerance, load balancing, and resource allocation. Below are ten such failure modes, each with a detection signal and a mitigation strategy:\n\n1. **Network Partition (Split Brain)**  \n   - *Detection Signal*: Increased latency or packet loss between nodes; nodes detect no communication with a subset of the cluster.  \n   - *Mitigation*: Implement consensus algorithms (e.g., Raft or Paxos) to detect and resolve split brain; use network health checks and fencing mechanisms to isolate partitions.\n\n2. **Node Failure (Crash or Unresponsiveness)**",
+      "text_sha256": "96082c1eade5895b1f8a2a00175810b6127ef82266ab54fb426d0a290c35b1aa",
+      "timings": {
+        "wall_ms": 1378.9551999980176,
+        "prompt_n": 20,
+        "predicted_n": 128,
+        "prompt_ms": 37.396,
+        "predicted_ms": 1307.709,
+        "prompt_per_second": 534.8165579206332,
+        "predicted_per_second": 97.11640739644676,
+        "first_token_ms": 47.6124765625,
+        "draft_n": 234,
+        "draft_n_accepted": 67
+      },
+      "spec": {
+        "drafts": 60.0,
+        "draft_tokens": 234.0,
+        "accepted_tokens": 67.0,
+        "acceptance": 0.2863247863247863,
+        "mean_accepted_length": 2.1166666666666667,
+        "accepted_by_position": {
+          "3": 10.0,
+          "1": 19.0,
+          "2": 11.0,
+          "0": 27.0
+        },
+        "acceptance_by_position": {
+          "0": 0.45,
+          "1": 0.31666666666666665,
+          "2": 0.18333333333333332,
+          "3": 0.16666666666666666
+        }
+      },
+      "wall_ms": 1378.9551999980176,
+      "matches_baseline": false
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "list-3",
+      "prompt_class": "list",
+      "prompt": "List ten things to check when a GPU inference server is slower than expected. Order them from cheapest to most expensive to test.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, provide a brief explanation for each.\n\nWe are looking for ten things to check when a GPU inference server is slower than expected, ordered from cheapest to most expensive to test. Each should have a brief explanation.\n\n---\n\n**1. Check GPU Utilization (via nvidia-smi or similar)**  \n*Cost: Cheapest*  \nCheck if the GPU is being used efficiently. Low utilization (e.g., <30%) may indicate idle time or inefficient batching. High utilization with high latency suggests bottlenecks in data transfer or model execution. This is a quick, free diagnostic.\n\n**2. Check CPU Utilization**  \n",
+      "text_sha256": "d77b0a0245ee4e646c190d7482d08559b9a005c274109bad5dee4134f8d08075",
+      "timings": {
+        "wall_ms": 1429.5613299982506,
+        "prompt_n": 25,
+        "predicted_n": 128,
+        "prompt_ms": 34.99,
+        "predicted_ms": 1366.805,
+        "prompt_per_second": 714.4898542440698,
+        "predicted_per_second": 92.91742421193952,
+        "first_token_ms": 45.668164062500004,
+        "draft_n": 247,
+        "draft_n_accepted": 64
+      },
+      "spec": {
+        "drafts": 62.0,
+        "draft_tokens": 247.0,
+        "accepted_tokens": 64.0,
+        "acceptance": 0.2591093117408907,
+        "mean_accepted_length": 2.032258064516129,
+        "accepted_by_position": {
+          "3": 4.0,
+          "1": 18.0,
+          "2": 11.0,
+          "0": 31.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5,
+          "1": 0.2903225806451613,
+          "2": 0.1774193548387097,
+          "3": 0.06451612903225806
+        }
+      },
+      "wall_ms": 1429.5613299982506,
+      "matches_baseline": false
+    },
+    {
+      "config": "n4",
+      "speculative": true,
+      "n_max": 4,
+      "p_min": null,
+      "prompt_id": "list-4",
+      "prompt_class": "list",
+      "prompt": "List ten design decisions that affect the memory footprint of a large language model serving system, with the trade-off for each.",
+      "run": 0,
+      "seed": 7,
+      "text": " 1. **Model Size and Architecture**  \n   - *Decision*: Choosing between a larger model (e.g., 13B vs. 7B parameters) or a smaller, more efficient architecture (e.g., distilled or quantized models).  \n   - *Trade-off*: Larger models offer better performance and accuracy but significantly increase memory usage. Smaller models reduce memory footprint but may sacrifice performance and context understanding.\n\n2. **Quantization Level**  \n   - *Decision*: Applying quantization (e.g., 8-bit, 4-bit, or 1-bit) to reduce the precision of model weights.  \n",
+      "text_sha256": "ab8344ff502696ec9d0a57605bb8c999cb9645a35e5a96447f0d75f2b80c21bf",
+      "timings": {
+        "wall_ms": 1278.1019499998365,
+        "prompt_n": 24,
+        "predicted_n": 128,
+        "prompt_ms": 36.386,
+        "predicted_ms": 1215.115,
+        "prompt_per_second": 659.5943494750728,
+        "predicted_per_second": 104.51685642922686,
+        "first_token_ms": 45.8790859375,
+        "draft_n": 222,
+        "draft_n_accepted": 71
+      },
+      "spec": {
+        "drafts": 56.0,
+        "draft_tokens": 222.0,
+        "accepted_tokens": 71.0,
+        "acceptance": 0.31981981981981983,
+        "mean_accepted_length": 2.267857142857143,
+        "accepted_by_position": {
+          "3": 8.0,
+          "1": 18.0,
+          "2": 10.0,
+          "0": 35.0
+        },
+        "acceptance_by_position": {
+          "0": 0.625,
+          "1": 0.32142857142857145,
+          "2": 0.17857142857142858,
+          "3": 0.14285714285714285
+        }
+      },
+      "wall_ms": 1278.1019499998365,
+      "matches_baseline": false
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "prose-1",
+      "prompt_class": "prose",
+      "prompt": "Explain in detail how a modern CPU pipeline works, covering fetch, decode, out-of-order execution, register renaming, branch prediction, and the memory hierarchy. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern CPU pipeline is a sophisticated system designed to maximize instruction throughput and minimize execution time by breaking down the execution of a program into a series of stages. The most fundamental stages are **fetch**, **decode**, and **execute**, which are typically followed by **memory access** and **write-back**. In a basic pipeline, each instruction moves through these stages sequentially, allowing one instruction to be processed at a time in each stage. However, modern CPUs go far beyond this simple model by incorporating advanced techniques such as **out-of-order execution**, **register renaming**, **branch prediction**, and a highly optimized **memory hierarchy** to achieve greater",
+      "text_sha256": "667c694250e8be73a201d2bf4c381f168a96f62c5a30856207e254ecd32ba077",
+      "timings": {
+        "wall_ms": 1623.3626710018143,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 47.779,
+        "predicted_ms": 1567.356,
+        "prompt_per_second": 753.4690973021619,
+        "predicted_per_second": 81.0281773891828,
+        "first_token_ms": 60.02396875,
+        "draft_n": 330,
+        "draft_n_accepted": 70
+      },
+      "spec": {
+        "drafts": 56.0,
+        "draft_tokens": 330.0,
+        "accepted_tokens": 70.0,
+        "acceptance": 0.21212121212121213,
+        "mean_accepted_length": 2.25,
+        "accepted_by_position": {
+          "3": 6.0,
+          "1": 19.0,
+          "2": 9.0,
+          "0": 29.0,
+          "4": 4.0,
+          "5": 3.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5178571428571429,
+          "1": 0.3392857142857143,
+          "2": 0.16071428571428573,
+          "3": 0.10714285714285714,
+          "4": 0.07142857142857142,
+          "5": 0.05357142857142857
+        }
+      },
+      "wall_ms": 1623.3626710018143,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "prose-2",
+      "prompt_class": "prose",
+      "prompt": "Describe how a database write-ahead log works, why it is written before the data pages, how recovery replays it after a crash, and what trade-offs checkpointing introduces. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A database write-ahead log (WAL) is a critical component of ensuring data durability and consistency in a transactional database system. The core principle of the WAL is that all changes to the database's data pages must be recorded in the log before they are actually written to the data pages on disk. This means that any transaction that modifies data must first update the log with a record of the change\u2014typically including the transaction ID, the data page affected, the old and new values, and a timestamp\u2014before the actual data is updated in memory or on disk. This ordering ensures that if a crash occurs, the database can recover to a",
+      "text_sha256": "1490b770e1f80a9b1b97073dd76867d95fbe976d6e82097207def92e8176e1ac",
+      "timings": {
+        "wall_ms": 1687.1399110023049,
+        "prompt_n": 39,
+        "predicted_n": 128,
+        "prompt_ms": 38.99,
+        "predicted_ms": 1623.958,
+        "prompt_per_second": 1000.2564760194922,
+        "predicted_per_second": 78.20399296040907,
+        "first_token_ms": 51.677171875,
+        "draft_n": 342,
+        "draft_n_accepted": 69
+      },
+      "spec": {
+        "drafts": 57.0,
+        "draft_tokens": 342.0,
+        "accepted_tokens": 69.0,
+        "acceptance": 0.20175438596491227,
+        "mean_accepted_length": 2.2105263157894735,
+        "accepted_by_position": {
+          "3": 4.0,
+          "1": 17.0,
+          "2": 6.0,
+          "0": 37.0,
+          "4": 3.0,
+          "5": 2.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6491228070175439,
+          "1": 0.2982456140350877,
+          "2": 0.10526315789473684,
+          "3": 0.07017543859649122,
+          "4": 0.05263157894736842,
+          "5": 0.03508771929824561
+        }
+      },
+      "wall_ms": 1687.1399110023049,
+      "matches_baseline": false
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "prose-3",
+      "prompt_class": "prose",
+      "prompt": "Explain how TCP congestion control works. Cover slow start, congestion avoidance, fast retransmit, and the differences between Reno and CUBIC. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " Your response should be in English, and contain at least 5 sentences. TCP congestion control is a set of mechanisms designed to prevent network congestion by dynamically adjusting the transmission rate based on network feedback. The process begins with **slow start**, where the sender increases its congestion window (cwnd) exponentially by doubling it after each successful acknowledgment, allowing rapid initial growth until the network signals congestion. Once the sender reaches a threshold, congestion avoidance takes over, where the cwnd grows more slowly\u2014linearly\u2014by increasing by one segment per round-trip time (RTT), thus reducing the risk of overwhelming the network. **Fast retransmit",
+      "text_sha256": "147a3592f02d1c48ecec49a14cb3a9968b757b5920753ce9eccfe6a947e41372",
+      "timings": {
+        "wall_ms": 1742.7765510001336,
+        "prompt_n": 34,
+        "predicted_n": 128,
+        "prompt_ms": 39.611,
+        "predicted_ms": 1679.124,
+        "prompt_per_second": 858.3474287445408,
+        "predicted_per_second": 75.6346761763872,
+        "first_token_ms": 52.729156249999996,
+        "draft_n": 357,
+        "draft_n_accepted": 67
+      },
+      "spec": {
+        "drafts": 60.0,
+        "draft_tokens": 357.0,
+        "accepted_tokens": 67.0,
+        "acceptance": 0.1876750700280112,
+        "mean_accepted_length": 2.1166666666666667,
+        "accepted_by_position": {
+          "3": 4.0,
+          "1": 17.0,
+          "2": 9.0,
+          "0": 35.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5833333333333334,
+          "1": 0.2833333333333333,
+          "2": 0.15,
+          "3": 0.06666666666666667,
+          "4": 0.016666666666666666,
+          "5": 0.016666666666666666
+        }
+      },
+      "wall_ms": 1742.7765510001336,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "prose-4",
+      "prompt_class": "prose",
+      "prompt": "Describe how a modern garbage collector works, covering mark and sweep, generational collection, write barriers, and compaction. Write several paragraphs.",
+      "run": 0,
+      "seed": 7,
+      "text": " A modern garbage collector works by identifying and reclaiming memory that is no longer accessible to the program. One of the most fundamental techniques used is **mark-and-sweep**. In this process, the collector first \"marks\" all objects that are still reachable from the root set (such as global variables or stack frames), and then \"sweeps\" through the heap to identify and free any unmarked objects. While simple and effective, traditional mark-and-sweep can lead to memory fragmentation and high pause times. To address these issues, modern garbage collectors often incorporate **generational collection**, which divides the heap into different regions based on object",
+      "text_sha256": "ac2509a24cee39689aaee05d847a061194248d9ed05b24b4f03e1fa8de25499d",
+      "timings": {
+        "wall_ms": 1545.1220920003834,
+        "prompt_n": 28,
+        "predicted_n": 128,
+        "prompt_ms": 33.587,
+        "predicted_ms": 1486.384,
+        "prompt_per_second": 833.6558787626165,
+        "predicted_per_second": 85.44225449143694,
+        "first_token_ms": 45.199375,
+        "draft_n": 312,
+        "draft_n_accepted": 73
+      },
+      "spec": {
+        "drafts": 54.0,
+        "draft_tokens": 312.0,
+        "accepted_tokens": 73.0,
+        "acceptance": 0.23397435897435898,
+        "mean_accepted_length": 2.351851851851852,
+        "accepted_by_position": {
+          "3": 8.0,
+          "1": 19.0,
+          "2": 11.0,
+          "0": 32.0,
+          "4": 2.0,
+          "5": 1.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5925925925925926,
+          "1": 0.35185185185185186,
+          "2": 0.2037037037037037,
+          "3": 0.14814814814814814,
+          "4": 0.037037037037037035,
+          "5": 0.018518518518518517
+        }
+      },
+      "wall_ms": 1545.1220920003834,
+      "matches_baseline": false
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "code-1",
+      "prompt_class": "code",
+      "prompt": "Write a Python function that merges two sorted lists into one sorted list without using sorted(), explain its complexity, and include three unit tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\ndef merge_sorted_lists(list1, list2):\n    \"\"\"\n    Merges two sorted lists into one sorted list.\n    \n    Parameters:\n    list1 (list): First sorted list.\n    list2 (list): Second sorted list.\n    \n    Returns:\n    list: A new sorted list containing all elements from both input lists.\n    \"\"\"\n    result = []\n    i, j = 0, 0\n    \n    # Compare elements from both lists and append the smaller one\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            result",
+      "text_sha256": "dd97d53d7007dfc310a9a0ba4e2fa75dd4a8fb87d47bda4059d5311871839975",
+      "timings": {
+        "wall_ms": 1011.5652780004893,
+        "prompt_n": 27,
+        "predicted_n": 128,
+        "prompt_ms": 34.038,
+        "predicted_ms": 954.506,
+        "prompt_per_second": 793.2310946589107,
+        "predicted_per_second": 133.0531185765202,
+        "first_token_ms": 41.495078125,
+        "draft_n": 198,
+        "draft_n_accepted": 94
+      },
+      "spec": {
+        "drafts": 33.0,
+        "draft_tokens": 198.0,
+        "accepted_tokens": 94.0,
+        "acceptance": 0.47474747474747475,
+        "mean_accepted_length": 3.8484848484848486,
+        "accepted_by_position": {
+          "3": 14.0,
+          "1": 18.0,
+          "2": 17.0,
+          "0": 25.0,
+          "4": 11.0,
+          "5": 9.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7575757575757576,
+          "1": 0.5454545454545454,
+          "2": 0.5151515151515151,
+          "3": 0.42424242424242425,
+          "4": 0.3333333333333333,
+          "5": 0.2727272727272727
+        }
+      },
+      "wall_ms": 1011.5652780004893,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "code-2",
+      "prompt_class": "code",
+      "prompt": "Write a Go function that implements an LRU cache with O(1) get and put using a map and a doubly linked list. Include the struct definitions and a short usage example.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```go\npackage main\n\nimport \"fmt\"\n\ntype Node struct {\n    key   int\n    value interface{}\n    prev  *Node\n    next  *Node\n}\n\ntype LRUCache struct {\n    capacity int\n    mapData  map[int]*Node\n    head     *Node\n    tail     *Node\n}\n\nfunc NewLRUCache(capacity int) *LRUCache {\n    return &LRUCache{\n        capacity: capacity,\n        mapData:  make(map[int]*Node),\n        head:     nil,\n        tail:     nil,\n    }\n}\n\nfunc (l *LRUC",
+      "text_sha256": "5bb2a252ef62c7b2efeed2f358f36cd9eca734f2a23d26bba3fd3c0eb6d05be4",
+      "timings": {
+        "wall_ms": 726.2859480033512,
+        "prompt_n": 37,
+        "predicted_n": 128,
+        "prompt_ms": 34.376,
+        "predicted_ms": 667.275,
+        "prompt_per_second": 1076.3323248778217,
+        "predicted_per_second": 190.3263272264059,
+        "first_token_ms": 39.589085937499995,
+        "draft_n": 134,
+        "draft_n_accepted": 104
+      },
+      "spec": {
+        "drafts": 23.0,
+        "draft_tokens": 134.0,
+        "accepted_tokens": 104.0,
+        "acceptance": 0.7761194029850746,
+        "mean_accepted_length": 5.521739130434782,
+        "accepted_by_position": {
+          "3": 16.0,
+          "1": 19.0,
+          "2": 18.0,
+          "0": 21.0,
+          "4": 16.0,
+          "5": 14.0
+        },
+        "acceptance_by_position": {
+          "0": 0.9130434782608695,
+          "1": 0.8260869565217391,
+          "2": 0.782608695652174,
+          "3": 0.6956521739130435,
+          "4": 0.6956521739130435,
+          "5": 0.6086956521739131
+        }
+      },
+      "wall_ms": 726.2859480033512,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "code-3",
+      "prompt_class": "code",
+      "prompt": "Write a SQL query that finds the top ten customers by total order value in the last ninety days, including customers with no orders. Explain the join and the index you would add.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain why the query might be slow and how to improve it.\n\n```sql\nSELECT \n    c.customer_id,\n    c.customer_name,\n    COALESCE(SUM(o.order_value), 0) AS total_order_value\nFROM \n    customers c\n    LEFT JOIN orders o ON c.customer_id = o.customer_id \n        AND o.order_date >= CURRENT_DATE - INTERVAL '90 days'\nGROUP BY \n    c.customer_id, c.customer_name\nORDER BY \n    total_order_value DESC\nLIMIT 10;\n```\n\n### Join Explanation:\n- A **LEFT JOIN** is used to include all customers,",
+      "text_sha256": "2dcdff231fac572fbc7a4c668ab68834e4a7dbe6d446b508474ceef72b005e28",
+      "timings": {
+        "wall_ms": 987.5810810008261,
+        "prompt_n": 36,
+        "predicted_n": 128,
+        "prompt_ms": 36.044,
+        "predicted_ms": 927.708,
+        "prompt_per_second": 998.7792697813785,
+        "predicted_per_second": 136.89652347505896,
+        "first_token_ms": 43.291718749999994,
+        "draft_n": 194,
+        "draft_n_accepted": 94
+      },
+      "spec": {
+        "drafts": 33.0,
+        "draft_tokens": 194.0,
+        "accepted_tokens": 94.0,
+        "acceptance": 0.4845360824742268,
+        "mean_accepted_length": 3.8484848484848486,
+        "accepted_by_position": {
+          "3": 13.0,
+          "1": 20.0,
+          "2": 15.0,
+          "0": 25.0,
+          "4": 11.0,
+          "5": 10.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7575757575757576,
+          "1": 0.6060606060606061,
+          "2": 0.45454545454545453,
+          "3": 0.3939393939393939,
+          "4": 0.3333333333333333,
+          "5": 0.30303030303030304
+        }
+      },
+      "wall_ms": 987.5810810008261,
+      "matches_baseline": false
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "code-4",
+      "prompt_class": "code",
+      "prompt": "Write a Rust function that parses a semicolon-separated key-value string into a HashMap, with error handling for duplicate keys and missing values. Include tests.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n\n```rust\nuse std::collections::HashMap;\n\n/// Parses a semicolon-separated key-value string into a HashMap.\n/// \n/// Each key-value pair is separated by a semicolon. The format is `key=value`.\n/// \n/// # Errors\n/// - Returns an error if a key appears more than once (duplicate key).\n/// - Returns an error if a value is missing (missing value).\n/// \n/// # Examples\n/// ```\n/// let input = \"name=John;age=30;city=New York\";\n/// let result = parse_key_value_string(input).unwrap();\n/// assert_eq!(result.get",
+      "text_sha256": "6680c226db71fd722714d3ddb5a6783e9db945cd0665e50e7b0fedbfe998b744",
+      "timings": {
+        "wall_ms": 1133.7375999974029,
+        "prompt_n": 30,
+        "predicted_n": 128,
+        "prompt_ms": 34.617,
+        "predicted_ms": 1073.706,
+        "prompt_per_second": 866.6262241095416,
+        "predicted_per_second": 118.28191329842622,
+        "first_token_ms": 43.005328125,
+        "draft_n": 227,
+        "draft_n_accepted": 89
+      },
+      "spec": {
+        "drafts": 38.0,
+        "draft_tokens": 227.0,
+        "accepted_tokens": 89.0,
+        "acceptance": 0.3920704845814978,
+        "mean_accepted_length": 3.3421052631578947,
+        "accepted_by_position": {
+          "3": 9.0,
+          "1": 20.0,
+          "2": 16.0,
+          "0": 27.0,
+          "4": 9.0,
+          "5": 8.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7105263157894737,
+          "1": 0.5263157894736842,
+          "2": 0.42105263157894735,
+          "3": 0.23684210526315788,
+          "4": 0.23684210526315788,
+          "5": 0.21052631578947367
+        }
+      },
+      "wall_ms": 1133.7375999974029,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "json-1",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 20 objects describing planets. Each object has keys name, diameter_km, and moons. Output only the JSON, no prose.",
+      "run": 0,
+      "seed": 7,
+      "text": " [{\"name\":\"Mercury\",\"diameter_km\":4879,\"moons\":0},{\"name\":\"Venus\",\"diameter_km\":12104,\"moons\":0},{\"name\":\"Earth\",\"diameter_km\":12756,\"moons\":1},{\"name\":\"Mars\",\"diameter_km\":6792,\"moons\":2},{\"name\":\"Jupiter\",\"diameter_km\":142984,\"moons\":95},{\"name\":\"Saturn\",\"diameter_km\":120536,\"moons\":146},{\"name\":\"Uranus",
+      "text_sha256": "a7560cc817ef306de76013438d250a4c6144428f02b987a3865d2ae0d4ef2e6e",
+      "timings": {
+        "wall_ms": 1066.4751389995217,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 32.582,
+        "predicted_ms": 1010.438,
+        "prompt_per_second": 982.1373764655331,
+        "predicted_per_second": 125.68806794677161,
+        "first_token_ms": 40.476046875,
+        "draft_n": 215,
+        "draft_n_accepted": 91
+      },
+      "spec": {
+        "drafts": 36.0,
+        "draft_tokens": 215.0,
+        "accepted_tokens": 91.0,
+        "acceptance": 0.4232558139534884,
+        "mean_accepted_length": 3.5277777777777777,
+        "accepted_by_position": {
+          "3": 13.0,
+          "1": 18.0,
+          "2": 16.0,
+          "0": 23.0,
+          "4": 11.0,
+          "5": 10.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6388888888888888,
+          "1": 0.5,
+          "2": 0.4444444444444444,
+          "3": 0.3611111111111111,
+          "4": 0.3055555555555556,
+          "5": 0.2777777777777778
+        }
+      },
+      "wall_ms": 1066.4751389995217,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "json-2",
+      "prompt_class": "json",
+      "prompt": "Return a JSON object describing a deployment: service, version, replicas, environment, and a list of three health check objects with path and interval_seconds. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"service\": \"api-service\",\n  \"version\": \"v1.2.0\",\n  \"replicas\": 3,\n  \"environment\": \"production\",\n  \"health_checks\": [\n    {\n      \"path\": \"/healthz\",\n      \"interval_seconds\": 10\n    },\n    {\n      \"path\": \"/ready\",\n      \"interval_seconds\": 15\n    },\n    {\n      \"path\": \"/liveness\",\n      \"interval_seconds\": 20\n    }\n  ]\n}\n```\n\n\n```json\n{\n  \"service\": \"api-service\",\n  \"",
+      "text_sha256": "603d8d920af5c9a02dd56ef28b42fb862e6a7f89209d9dff4ce0857017538513",
+      "timings": {
+        "wall_ms": 790.2999880025163,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 34.048,
+        "predicted_ms": 732.435,
+        "prompt_per_second": 1027.9605263157894,
+        "predicted_per_second": 173.39422610880146,
+        "first_token_ms": 39.7701484375,
+        "draft_n": 150,
+        "draft_n_accepted": 101
+      },
+      "spec": {
+        "drafts": 25.0,
+        "draft_tokens": 150.0,
+        "accepted_tokens": 101.0,
+        "acceptance": 0.6733333333333333,
+        "mean_accepted_length": 5.04,
+        "accepted_by_position": {
+          "3": 16.0,
+          "1": 20.0,
+          "2": 17.0,
+          "0": 22.0,
+          "4": 13.0,
+          "5": 13.0
+        },
+        "acceptance_by_position": {
+          "0": 0.88,
+          "1": 0.8,
+          "2": 0.68,
+          "3": 0.64,
+          "4": 0.52,
+          "5": 0.52
+        }
+      },
+      "wall_ms": 790.2999880025163,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "json-3",
+      "prompt_class": "json",
+      "prompt": "Return a JSON array of 15 log entries. Each entry has timestamp, level, service, message, and request_id. Use realistic values. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n[\n  {\n    \"timestamp\": \"2023-10-05T08:15:30Z\",\n    \"level\": \"INFO\",\n    \"service\": \"auth-service\",\n    \"message\": \"User login successful: user_id=12345\",\n    \"request_id\": \"req-789abc\"\n  },\n  {\n    \"timestamp\": \"2023-10-05T08:16:12Z\",\n    \"level\": \"ERROR\",\n    \"service\": \"payment-service\",\n    \"message\": \"Payment",
+      "text_sha256": "6061ca7825c253df934e3c0698fa5a92e6c67f01b3efa273f77697b7ffd6222e",
+      "timings": {
+        "wall_ms": 920.7190849992912,
+        "prompt_n": 35,
+        "predicted_n": 128,
+        "prompt_ms": 38.94,
+        "predicted_ms": 858.34,
+        "prompt_per_second": 898.818695428865,
+        "predicted_per_second": 147.9600158445371,
+        "first_token_ms": 45.64578125,
+        "draft_n": 180,
+        "draft_n_accepted": 96
+      },
+      "spec": {
+        "drafts": 30.0,
+        "draft_tokens": 180.0,
+        "accepted_tokens": 96.0,
+        "acceptance": 0.5333333333333333,
+        "mean_accepted_length": 4.2,
+        "accepted_by_position": {
+          "3": 14.0,
+          "1": 17.0,
+          "2": 15.0,
+          "0": 24.0,
+          "4": 14.0,
+          "5": 12.0
+        },
+        "acceptance_by_position": {
+          "0": 0.8,
+          "1": 0.5666666666666667,
+          "2": 0.5,
+          "3": 0.4666666666666667,
+          "4": 0.4666666666666667,
+          "5": 0.4
+        }
+      },
+      "wall_ms": 920.7190849992912,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "json-4",
+      "prompt_class": "json",
+      "prompt": "Return a JSON schema for a user profile with name, email, age, tags, and addresses. Include types and required fields. Output only the JSON.",
+      "run": 0,
+      "seed": 7,
+      "text": "\n\n```json\n{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"The user's full name\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"description\": \"The user's email address\"\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 150,\n      \"description",
+      "text_sha256": "61125032e0edbb4f1f95ab79d08d3db5c8de865843df72503c90ca1c0eb188ec",
+      "timings": {
+        "wall_ms": 849.8565109985066,
+        "prompt_n": 31,
+        "predicted_n": 128,
+        "prompt_ms": 37.087,
+        "predicted_ms": 788.604,
+        "prompt_per_second": 835.8724081214441,
+        "predicted_per_second": 161.04407281728217,
+        "first_token_ms": 43.247968750000005,
+        "draft_n": 165,
+        "draft_n_accepted": 99
+      },
+      "spec": {
+        "drafts": 28.0,
+        "draft_tokens": 165.0,
+        "accepted_tokens": 99.0,
+        "acceptance": 0.6,
+        "mean_accepted_length": 4.535714285714286,
+        "accepted_by_position": {
+          "3": 14.0,
+          "1": 21.0,
+          "2": 17.0,
+          "0": 25.0,
+          "4": 12.0,
+          "5": 10.0
+        },
+        "acceptance_by_position": {
+          "0": 0.8928571428571429,
+          "1": 0.75,
+          "2": 0.6071428571428571,
+          "3": 0.5,
+          "4": 0.42857142857142855,
+          "5": 0.35714285714285715
+        }
+      },
+      "wall_ms": 849.8565109985066,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "math-1",
+      "prompt_class": "math",
+      "prompt": "Solve the equation 3x + 7 = 2x + 19 step by step. Show each algebraic operation and verify the answer.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, explain the significance of the order of operations in solving equations.\n\nTo solve the equation \\(3x + 7 = 2x + 19\\), we will follow a step-by-step approach, showing each algebraic operation, verify the solution, and explain the importance of the order of operations.\n\n### Step-by-Step Solution:\n\n1. **Start with the given equation:**\n   \\[\n   3x + 7 = 2x + 19\n   \\]\n\n2. **Subtract \\(2x\\) from both sides to isolate the variable terms on one side:**\n   \\[\n  ",
+      "text_sha256": "a0e83071e0a59a0fc83dbc6933a07799d2807e1ec2e11c1d5bf7b4543708de4b",
+      "timings": {
+        "wall_ms": 1023.4740799969586,
+        "prompt_n": 32,
+        "predicted_n": 128,
+        "prompt_ms": 32.451,
+        "predicted_ms": 966.384,
+        "prompt_per_second": 986.102123201134,
+        "predicted_per_second": 131.41773870428318,
+        "first_token_ms": 40.000875,
+        "draft_n": 204,
+        "draft_n_accepted": 92
+      },
+      "spec": {
+        "drafts": 34.0,
+        "draft_tokens": 204.0,
+        "accepted_tokens": 92.0,
+        "acceptance": 0.45098039215686275,
+        "mean_accepted_length": 3.7058823529411766,
+        "accepted_by_position": {
+          "3": 12.0,
+          "1": 20.0,
+          "2": 17.0,
+          "0": 25.0,
+          "4": 9.0,
+          "5": 9.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7352941176470589,
+          "1": 0.5882352941176471,
+          "2": 0.5,
+          "3": 0.35294117647058826,
+          "4": 0.2647058823529412,
+          "5": 0.2647058823529412
+        }
+      },
+      "wall_ms": 1023.4740799969586,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "math-2",
+      "prompt_class": "math",
+      "prompt": "A train leaves at 09:15 and travels 240 km at 80 km/h. It stops for 12 minutes. What time does it arrive? Show the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, how long does it take to travel 240 km at 80 km/h?\n\nTo determine the arrival time, let's break down the problem into two parts:\n\n1. **Travel time**:  \n   The train travels 240 km at 80 km/h.  \n   Time = Distance \u00f7 Speed = \\( \\frac{240}{80} = 3 \\) hours.\n\n2. **Stop time**:  \n   The train stops for 12 minutes.\n\n3. **Total time from departure to arrival**:  \n   3 hours + 12 minutes = 3 hours",
+      "text_sha256": "ac052de2bb63f49cfe6290ba268e45b7dc0e611b936c5f85fb612f60b3fb5ab4",
+      "timings": {
+        "wall_ms": 905.0354699975287,
+        "prompt_n": 42,
+        "predicted_n": 128,
+        "prompt_ms": 40.6,
+        "predicted_ms": 839.702,
+        "prompt_per_second": 1034.4827586206895,
+        "predicted_per_second": 151.2441318467742,
+        "first_token_ms": 47.160171875,
+        "draft_n": 171,
+        "draft_n_accepted": 98
+      },
+      "spec": {
+        "drafts": 29.0,
+        "draft_tokens": 171.0,
+        "accepted_tokens": 98.0,
+        "acceptance": 0.5730994152046783,
+        "mean_accepted_length": 4.379310344827586,
+        "accepted_by_position": {
+          "3": 15.0,
+          "1": 19.0,
+          "2": 19.0,
+          "0": 21.0,
+          "4": 13.0,
+          "5": 11.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7241379310344828,
+          "1": 0.6551724137931034,
+          "2": 0.6551724137931034,
+          "3": 0.5172413793103449,
+          "4": 0.4482758620689655,
+          "5": 0.3793103448275862
+        }
+      },
+      "wall_ms": 905.0354699975287,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "math-3",
+      "prompt_class": "math",
+      "prompt": "Compute the sum of the first 50 positive integers, then the sum of their squares. Show the formulas and the arithmetic.",
+      "run": 0,
+      "seed": 7,
+      "text": " To solve this problem, we will compute two things:\n\n1. The **sum of the first 50 positive integers**.\n2. The **sum of the squares of the first 50 positive integers**.\n\nWe'll use well-known formulas from arithmetic and algebra.\n\n---\n\n### **1. Sum of the first 50 positive integers**\n\nThe formula for the sum of the first $ n $ positive integers is:\n\n$$\nS = 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$\n\nFor $ n = 50 $:\n\n$$\nS",
+      "text_sha256": "fbbfe34aaa8ad7b44f3f7fb1de8b50c58c2ecb6c672118131d13863546caf3ff",
+      "timings": {
+        "wall_ms": 899.2336869996507,
+        "prompt_n": 26,
+        "predicted_n": 128,
+        "prompt_ms": 31.83,
+        "predicted_ms": 842.419,
+        "prompt_per_second": 816.8394596292806,
+        "predicted_per_second": 150.75633384337246,
+        "first_token_ms": 38.4113984375,
+        "draft_n": 177,
+        "draft_n_accepted": 97
+      },
+      "spec": {
+        "drafts": 30.0,
+        "draft_tokens": 177.0,
+        "accepted_tokens": 97.0,
+        "acceptance": 0.5480225988700564,
+        "mean_accepted_length": 4.233333333333333,
+        "accepted_by_position": {
+          "3": 14.0,
+          "1": 19.0,
+          "2": 17.0,
+          "0": 23.0,
+          "4": 13.0,
+          "5": 11.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7666666666666667,
+          "1": 0.6333333333333333,
+          "2": 0.5666666666666667,
+          "3": 0.4666666666666667,
+          "4": 0.43333333333333335,
+          "5": 0.36666666666666664
+        }
+      },
+      "wall_ms": 899.2336869996507,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "math-4",
+      "prompt_class": "math",
+      "prompt": "Find the derivative of f(x) = 3x^4 - 2x^3 + 7x - 5. Then find the equation of the tangent line at x = 2. Show every step.",
+      "run": 0,
+      "seed": 7,
+      "text": " To find the derivative of the function and the equation of the tangent line at a given point, we follow these steps:\n\n---\n\n### **Step 1: Find the derivative of $ f(x) $**\n\nGiven:\n$$\nf(x) = 3x^4 - 2x^3 + 7x - 5\n$$\n\nWe differentiate term by term using the power rule:\n$$\n\\frac{d}{dx}[x^n] = n x^{n-1}\n$$\n\nApply to each term:\n\n- $ \\frac{d}{dx}[3x^4] = 3 \\cdot 4",
+      "text_sha256": "2fb48c89710038218dcbb90c852e3610789729763bc19f24fae1769580a559cd",
+      "timings": {
+        "wall_ms": 901.5992940003343,
+        "prompt_n": 45,
+        "predicted_n": 128,
+        "prompt_ms": 36.65,
+        "predicted_ms": 841.803,
+        "prompt_per_second": 1227.830832196453,
+        "predicted_per_second": 150.86665169879413,
+        "first_token_ms": 43.2265859375,
+        "draft_n": 176,
+        "draft_n_accepted": 97
+      },
+      "spec": {
+        "drafts": 30.0,
+        "draft_tokens": 176.0,
+        "accepted_tokens": 97.0,
+        "acceptance": 0.5511363636363636,
+        "mean_accepted_length": 4.233333333333333,
+        "accepted_by_position": {
+          "3": 12.0,
+          "1": 20.0,
+          "2": 19.0,
+          "0": 23.0,
+          "4": 12.0,
+          "5": 11.0
+        },
+        "acceptance_by_position": {
+          "0": 0.7666666666666667,
+          "1": 0.6666666666666666,
+          "2": 0.6333333333333333,
+          "3": 0.4,
+          "4": 0.4,
+          "5": 0.36666666666666664
+        }
+      },
+      "wall_ms": 901.5992940003343,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "list-1",
+      "prompt_class": "list",
+      "prompt": "List ten practical ways to reduce tail latency in a web service. For each, give a one-sentence explanation and a concrete metric to watch.",
+      "run": 0,
+      "seed": 7,
+      "text": "  \n\n1. **Use a caching layer (e.g., Redis or Memcached)**  \n   - *Explanation*: Caching frequently accessed data reduces the need to fetch from the database or compute-intensive services.  \n   - *Metric*: Cache hit rate (e.g., 95% cache hit rate).  \n\n2. **Optimize database queries (e.g., indexing, query optimization)**  \n   - *Explanation*: Efficient queries reduce database response time, which is a major contributor to tail latency.  \n   - *Metric*: Average query execution time (e.g., <100ms).  \n\n3. **Implement connection pooling",
+      "text_sha256": "b74024aa6d7fd83cb3d233ac8b7e0337d60f95cb99955ee296290ef5d73c061e",
+      "timings": {
+        "wall_ms": 1358.3219110005302,
+        "prompt_n": 29,
+        "predicted_n": 128,
+        "prompt_ms": 33.084,
+        "predicted_ms": 1296.824,
+        "prompt_per_second": 876.5566436948374,
+        "predicted_per_second": 97.93156203154784,
+        "first_token_ms": 43.21543750000001,
+        "draft_n": 276,
+        "draft_n_accepted": 80
+      },
+      "spec": {
+        "drafts": 46.0,
+        "draft_tokens": 276.0,
+        "accepted_tokens": 80.0,
+        "acceptance": 0.2898550724637681,
+        "mean_accepted_length": 2.7391304347826084,
+        "accepted_by_position": {
+          "3": 9.0,
+          "1": 18.0,
+          "2": 14.0,
+          "0": 30.0,
+          "4": 5.0,
+          "5": 4.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6521739130434783,
+          "1": 0.391304347826087,
+          "2": 0.30434782608695654,
+          "3": 0.1956521739130435,
+          "4": 0.10869565217391304,
+          "5": 0.08695652173913043
+        }
+      },
+      "wall_ms": 1358.3219110005302,
+      "matches_baseline": true
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "list-2",
+      "prompt_class": "list",
+      "prompt": "List ten failure modes of a distributed scheduler and, for each, one detection signal and one mitigation.",
+      "run": 0,
+      "seed": 7,
+      "text": " Failure modes of a distributed scheduler can include issues related to communication, coordination, fault tolerance, load balancing, and resource allocation. Below are ten such failure modes, each with a detection signal and a mitigation strategy:\n\n1. **Network Partition (Split Brain)**  \n   - *Detection Signal*: Increased latency or packet loss between nodes; nodes detect no communication with a subset of the cluster.  \n   - *Mitigation*: Implement consensus algorithms (e.g., Raft or Paxos) to detect and resolve split brain; use network health checks and fencing mechanisms to isolate partitions.\n\n2. **Node Failure (Crash or Unresponsiveness)**",
+      "text_sha256": "96082c1eade5895b1f8a2a00175810b6127ef82266ab54fb426d0a290c35b1aa",
+      "timings": {
+        "wall_ms": 1567.1482510006172,
+        "prompt_n": 20,
+        "predicted_n": 128,
+        "prompt_ms": 35.374,
+        "predicted_ms": 1502.283,
+        "prompt_per_second": 565.3870074065698,
+        "predicted_per_second": 84.537999830924,
+        "first_token_ms": 47.110585937500005,
+        "draft_n": 317,
+        "draft_n_accepted": 72
+      },
+      "spec": {
+        "drafts": 55.0,
+        "draft_tokens": 317.0,
+        "accepted_tokens": 72.0,
+        "acceptance": 0.22712933753943218,
+        "mean_accepted_length": 2.309090909090909,
+        "accepted_by_position": {
+          "3": 8.0,
+          "1": 19.0,
+          "2": 10.0,
+          "0": 27.0,
+          "4": 6.0,
+          "5": 2.0
+        },
+        "acceptance_by_position": {
+          "0": 0.4909090909090909,
+          "1": 0.34545454545454546,
+          "2": 0.18181818181818182,
+          "3": 0.14545454545454545,
+          "4": 0.10909090909090909,
+          "5": 0.03636363636363636
+        }
+      },
+      "wall_ms": 1567.1482510006172,
+      "matches_baseline": false
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "list-3",
+      "prompt_class": "list",
+      "prompt": "List ten things to check when a GPU inference server is slower than expected. Order them from cheapest to most expensive to test.",
+      "run": 0,
+      "seed": 7,
+      "text": " Also, provide a brief explanation for each.\n\nWe are looking for ten things to check when a GPU inference server is slower than expected, ordered from cheapest to most expensive to test. Each should have a brief explanation.\n\n---\n\n**1. Check GPU Utilization (via nvidia-smi or similar)**  \n*Cost: Cheapest*  \nCheck if the GPU is being used efficiently. Low utilization (e.g., <30%) may indicate idle time or inefficient batching. High utilization with high latency suggests bottlenecks in data transfer or model execution. This is a quick, free diagnostic.\n\n**2. Check CPU Utilization**  \n",
+      "text_sha256": "d77b0a0245ee4e646c190d7482d08559b9a005c274109bad5dee4134f8d08075",
+      "timings": {
+        "wall_ms": 1741.8513500015251,
+        "prompt_n": 25,
+        "predicted_n": 128,
+        "prompt_ms": 33.488,
+        "predicted_ms": 1679.232,
+        "prompt_per_second": 746.5360726230291,
+        "predicted_per_second": 75.62981172345454,
+        "first_token_ms": 46.607,
+        "draft_n": 351,
+        "draft_n_accepted": 67
+      },
+      "spec": {
+        "drafts": 59.0,
+        "draft_tokens": 351.0,
+        "accepted_tokens": 67.0,
+        "acceptance": 0.1908831908831909,
+        "mean_accepted_length": 2.135593220338983,
+        "accepted_by_position": {
+          "3": 4.0,
+          "1": 17.0,
+          "2": 11.0,
+          "0": 30.0,
+          "4": 4.0,
+          "5": 1.0
+        },
+        "acceptance_by_position": {
+          "0": 0.5084745762711864,
+          "1": 0.288135593220339,
+          "2": 0.1864406779661017,
+          "3": 0.06779661016949153,
+          "4": 0.06779661016949153,
+          "5": 0.01694915254237288
+        }
+      },
+      "wall_ms": 1741.8513500015251,
+      "matches_baseline": false
+    },
+    {
+      "config": "n6",
+      "speculative": true,
+      "n_max": 6,
+      "p_min": null,
+      "prompt_id": "list-4",
+      "prompt_class": "list",
+      "prompt": "List ten design decisions that affect the memory footprint of a large language model serving system, with the trade-off for each.",
+      "run": 0,
+      "seed": 7,
+      "text": " 1. **Model Size and Architecture**  \n   - *Decision*: Choosing between a larger model (e.g., 13B vs. 7B parameters) or a smaller, more efficient architecture (e.g., distilled or quantized models).  \n   - *Trade-off*: Larger models offer better performance and accuracy but significantly increase memory usage. Smaller models reduce memory footprint but may sacrifice performance and context understanding.\n\n2. **Quantization Level**  \n   - *Decision*: Applying quantization (e.g., 8-bit, 4-bit, or 1-bit) to reduce the precision of model weights.  \n",
+      "text_sha256": "ab8344ff502696ec9d0a57605bb8c999cb9645a35e5a96447f0d75f2b80c21bf",
+      "timings": {
+        "wall_ms": 1535.8432969987916,
+        "prompt_n": 24,
+        "predicted_n": 128,
+        "prompt_ms": 37.053,
+        "predicted_ms": 1474.868,
+        "prompt_per_second": 647.7208323212695,
+        "predicted_per_second": 86.10940097690099,
+        "first_token_ms": 48.57540625,
+        "draft_n": 311,
+        "draft_n_accepted": 74
+      },
+      "spec": {
+        "drafts": 53.0,
+        "draft_tokens": 311.0,
+        "accepted_tokens": 74.0,
+        "acceptance": 0.2379421221864952,
+        "mean_accepted_length": 2.3962264150943398,
+        "accepted_by_position": {
+          "3": 7.0,
+          "1": 17.0,
+          "2": 9.0,
+          "0": 34.0,
+          "4": 4.0,
+          "5": 3.0
+        },
+        "acceptance_by_position": {
+          "0": 0.6415094339622641,
+          "1": 0.32075471698113206,
+          "2": 0.16981132075471697,
+          "3": 0.1320754716981132,
+          "4": 0.07547169811320754,
+          "5": 0.05660377358490566
+        }
+      },
+      "wall_ms": 1535.8432969987916,
+      "matches_baseline": false
+    }
+  ],
+  "validation": {
+    "outputs_checked": 80,
+    "output_mismatches": 12
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "qwen3-4b-instruct-2507__qwen3-0.6b-q4",
+  "target": {
+    "filename": "Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+    "url": "https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/resolve/main/Qwen3-4B-Instruct-2507-Q4_K_M.gguf"
+  },
+  "draft": {
+    "filename": "Qwen3-0.6B-Q4_K_M.gguf",
+    "url": "https://huggingface.co/unsloth/Qwen3-0.6B-GGUF/resolve/main/Qwen3-0.6B-Q4_K_M.gguf"
+  },
+  "server": {
+    "context": 4096,
+    "parallel": 1,
+    "gpu_layers": 99,
+    "draft_gpu_layers": 99,
+    "flash_attn": "on",
+    "kv_type": "f16",
+    "host": "127.0.0.1",
+    "port": 8092
+  },
+  "run": {
+    "max_tokens": 128,
+    "runs": 1,
+    "seed": 7,
+    "temperature": 0.0
+  },
+  "configs": [
+    {
+      "name": "baseline",
+      "spec": null
+    },
+    {
+      "name": "n2",
+      "spec": {
+        "n_max": 2
+      }
+    },
+    {
+      "name": "n4",
+      "spec": {
+        "n_max": 4
+      }
+    },
+    {
+      "name": "n6",
+      "spec": {
+        "n_max": 6
+      }
+    }
+  ]
+}
