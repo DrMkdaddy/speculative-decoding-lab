@@ -1,5 +1,7 @@
 # speculative-decoding-lab
 
+[![test](https://github.com/DrMkdaddy/speculative-decoding-lab/actions/workflows/test.yml/badge.svg)](https://github.com/DrMkdaddy/speculative-decoding-lab/actions/workflows/test.yml)
+
 Measure when speculative decoding actually pays on one 16 GB GPU.
 
 The setup is a Qwen3-4B target and a Qwen3-0.6B draft, both on the same
