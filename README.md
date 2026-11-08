@@ -25,6 +25,18 @@ target cost. A 0.6B draft is cheap in absolute terms, but it is a large
 fraction of a 4B target's step and a smaller fraction of an 8B target's step.
 This repo measures where that ratio flips.
 
+```mermaid
+flowchart LR
+    P["prompt"] --> D["draft<br/>Qwen3-0.6B"]
+    P --> T["target<br/>Qwen3-8B or 4B"]
+    D -->|"n draft tokens"| V["target verifies<br/>n+1 in one pass"]
+    V -->|"accepted prefix"| O["output"]
+    V -->|"rejected suffix"| T
+    T --> O
+    V --> M["acceptance per position<br/>decode tok/s, exact match, VRAM"]
+```
+
+
 ## What is measured
 
 For each configuration (`baseline`, `n2`, `n4`, `n6`, `n8`, `n6-p0.6`):
